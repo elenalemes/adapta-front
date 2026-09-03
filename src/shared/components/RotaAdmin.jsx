@@ -3,6 +3,7 @@ import { useAuth } from "../hooks/useAuth";
 
 const ABAS = [
   { to: "/admin/jogos", label: "Jogos" },
+  { to: "/admin/componentes", label: "Componentes" },
   { to: "/admin/usuarios", label: "Usuários" },
 ];
 

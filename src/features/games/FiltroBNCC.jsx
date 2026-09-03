@@ -1,5 +1,5 @@
 // Dois selects em cascata: a Área da BNCC decide quais Componentes
-// (Habilidades) aparecem no segundo select. GET /areas já traz os
+// curriculares aparecem no segundo select. GET /areas já traz os
 // componentes aninhados, então não precisa de chamada extra pra montar isso.
 export function FiltroBNCC({
   areas,
@@ -33,13 +33,13 @@ export function FiltroBNCC({
       </select>
 
       <select
-        aria-label="Selecione a Habilidade"
+        aria-label="Selecione o componente curricular"
         value={componenteId ?? ""}
         onChange={(evento) => onComponenteChange(evento.target.value || null)}
         disabled={!areaId}
         className="w-full rounded-full border border-gray-300 px-5 py-2.5 text-sm text-gray-700 focus:border-blue-500 focus:outline-none disabled:bg-gray-50 disabled:text-gray-400 sm:w-auto"
       >
-        <option value="">Selecione a Habilidade</option>
+        <option value="">Selecione o componente curricular</option>
         {componentesDisponiveis.map((componente) => (
           <option key={componente.id} value={componente.id}>
             {componente.nome}

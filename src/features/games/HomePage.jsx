@@ -39,7 +39,7 @@ export function HomePage() {
 
   function handleAreaChange(novaAreaId) {
     setAreaId(novaAreaId);
-    setComponenteId(null); // trocar de área invalida a habilidade escolhida antes
+    setComponenteId(null); // trocar de área invalida o componente curricular escolhido antes
   }
 
   const jogos = paginaJogos?.conteudo ?? [];

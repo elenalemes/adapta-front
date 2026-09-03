@@ -8,6 +8,8 @@ import {
   comentarJogo,
   listarComentariosDaPostagem,
   comentarPostagem,
+  atualizarComentario,
+  excluirComentario,
 } from "./comentariosApi";
 
 /**
@@ -16,7 +18,7 @@ import {
  * de dentro do detalhe do jogo/postagem) e só busca o resto sob demanda.
  */
 export function ComentariosSecao({ tipo, alvoId, comentariosIniciais, totalInicial }) {
-  const { estaLogado } = useAuth();
+  const { estaLogado, usuario, isAdmin } = useAuth();
   const [comentarios, setComentarios] = useState(comentariosIniciais);
   const [total, setTotal] = useState(totalInicial);
   const [carregandoMais, setCarregandoMais] = useState(false);
@@ -41,6 +43,17 @@ export function ComentariosSecao({ tipo, alvoId, comentariosIniciais, totalInici
     setTotal((atual) => atual + 1);
   }
 
+  async function handleEditarComentario(id, conteudo) {
+    const atualizado = await atualizarComentario(id, conteudo);
+    setComentarios((atuais) => atuais.map((c) => (c.id === id ? atualizado : c)));
+  }
+
+  async function handleExcluirComentario(id) {
+    await excluirComentario(id);
+    setComentarios((atuais) => atuais.filter((c) => c.id !== id));
+    setTotal((atual) => atual - 1);
+  }
+
   const mostrandoTodos = comentarios.length >= total;
 
   return (
@@ -60,7 +73,13 @@ export function ComentariosSecao({ tipo, alvoId, comentariosIniciais, totalInici
         </p>
       )}
 
-      <ListaComentarios comentarios={comentarios} />
+      <ListaComentarios
+        comentarios={comentarios}
+        usuarioId={usuario?.id}
+        isAdmin={isAdmin}
+        onEditar={handleEditarComentario}
+        onExcluir={handleExcluirComentario}
+      />
 
       {!mostrandoTodos && (
         <button

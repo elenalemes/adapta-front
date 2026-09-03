@@ -12,6 +12,8 @@ import { EsqueciSenhaPage } from "../features/auth/EsqueciSenhaPage";
 import { RedefinirSenhaPage } from "../features/auth/RedefinirSenhaPage";
 import { AdminJogosPage } from "../features/admin/AdminJogosPage";
 import { JogoFormPage } from "../features/admin/JogoFormPage";
+import { AdminComponentesPage } from "../features/admin/AdminComponentesPage";
+import { ComponenteFormPage } from "../features/admin/ComponenteFormPage";
 import { AdminUsuariosPage } from "../features/admin/AdminUsuariosPage";
 import { ProfilePage } from "../features/profile/ProfilePage";
 import { BlogListPage } from "../features/posts/BlogListPage";
@@ -44,6 +46,9 @@ export function AppRoutes() {
           <Route path="/admin/jogos" element={<AdminJogosPage />} />
           <Route path="/admin/jogos/novo" element={<JogoFormPage />} />
           <Route path="/admin/jogos/:id/editar" element={<JogoFormPage />} />
+          <Route path="/admin/componentes" element={<AdminComponentesPage />} />
+          <Route path="/admin/componentes/novo" element={<ComponenteFormPage />} />
+          <Route path="/admin/componentes/:id/editar" element={<ComponenteFormPage />} />
           <Route path="/admin/usuarios" element={<AdminUsuariosPage />} />
         </Route>
       </Route>

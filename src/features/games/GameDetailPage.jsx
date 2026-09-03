@@ -7,8 +7,8 @@ import { SeletorNota } from "./SeletorNota";
 import { BotaoFavoritar } from "./BotaoFavoritar";
 import { ComentariosSecao } from "../comments/ComentariosSecao";
 
-// Cada componente curricular (habilidade) já vem com os dados da sua área
-// (categoria) aninhados — só precisamos agrupar por área pra exibir.
+// Cada componente curricular já vem com os dados da sua área (categoria)
+// aninhados — só precisamos agrupar por área pra exibir.
 function agruparPorArea(componentes) {
   const areas = new Map();
   for (const componente of componentes ?? []) {
@@ -68,7 +68,7 @@ export function GameDetailPage() {
           </h2>
           <p className="mt-1 text-xs text-gray-500">
             A BNCC organiza o currículo de aprendizado infantil em áreas do conhecimento
-            categorias e habilidades. Este jogo trabalha com:
+            categorias e componentes curriculares. Este jogo trabalha com:
           </p>
 
           <div className="mt-4 space-y-4">
@@ -84,7 +84,7 @@ export function GameDetailPage() {
                       className="max-w-xs rounded-lg border border-blue-200 bg-white px-3 py-2 text-xs"
                     >
                       <span className="block font-medium text-blue-700">
-                        Habilidade: {componente.nome}
+                        Componente curricular: {componente.nome}
                       </span>
                       {componente.descricao && (
                         <span className="mt-0.5 block text-gray-500">{componente.descricao}</span>
