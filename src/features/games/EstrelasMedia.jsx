@@ -11,8 +11,9 @@ export function EstrelasMedia({ media, total }) {
           <Star
             key={n}
             className="h-4 w-4"
-            fill={n <= cheias ? "#facc15" : "none"}
-            stroke="#facc15"
+            fill={n <= cheias ? "#B8860B" : "none"}
+            stroke="#1A1A1A"
+            strokeWidth={1.5}
           />
         ))}
       </div>

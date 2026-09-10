@@ -19,7 +19,7 @@ export function FiltroBNCC({
         aria-label="Selecione a categoria"
         value={areaId ?? ""}
         onChange={(evento) => onAreaChange(evento.target.value || null)}
-        className="w-full rounded-full border border-gray-300 px-5 py-2.5 text-sm text-gray-700 focus:border-blue-500 focus:outline-none sm:w-auto"
+        className="w-full rounded-full border border-borda px-5 py-2.5 text-sm text-gray-700 focus:border-blue-500 focus:outline-none sm:w-auto"
       >
         <option value="">Selecione a categoria</option>
         {areas?.map((area) => (
@@ -34,7 +34,7 @@ export function FiltroBNCC({
         value={componenteId ?? ""}
         onChange={(evento) => onComponenteChange(evento.target.value || null)}
         disabled={!areaId}
-        className="w-full rounded-full border border-gray-300 px-5 py-2.5 text-sm text-gray-700 focus:border-blue-500 focus:outline-none disabled:bg-gray-50 disabled:text-gray-400 sm:w-auto"
+        className="w-full rounded-full border border-borda px-5 py-2.5 text-sm text-gray-700 focus:border-blue-500 focus:outline-none disabled:bg-gray-50 disabled:text-gray-400 sm:w-auto"
       >
         <option value="">Selecione o componente curricular</option>
         {componentesDisponiveis.map((componente) => (

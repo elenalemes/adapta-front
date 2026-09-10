@@ -36,7 +36,7 @@ export function SeletorNota({ jogoId, minhaNotaInicial }) {
   return (
     <div>
       <p className="mb-1 text-sm text-gray-600">
-        {minhaNota ? "Sua avaliação:" : "Avalie este jogo:"}
+        {minhaNota ? `Sua avaliação: ${minhaNota} de 5` : "Avalie este jogo:"}
       </p>
       <div className="flex gap-1" role="radiogroup" aria-label="Sua nota para este jogo">
         {[1, 2, 3, 4, 5].map((n) => (
@@ -50,9 +50,10 @@ export function SeletorNota({ jogoId, minhaNotaInicial }) {
             className="disabled:opacity-50"
           >
             <Star
-              className="h-6 w-6"
-              fill={minhaNota && n <= minhaNota ? "#facc15" : "none"}
-              stroke="#facc15"
+              className="h-7 w-7"
+              fill={minhaNota && n <= minhaNota ? "#B8860B" : "none"}
+              stroke="#1A1A1A"
+              strokeWidth={1.5}
             />
             <span className="sr-only">
               {n} estrela{n > 1 ? "s" : ""}

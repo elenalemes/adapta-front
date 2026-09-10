@@ -111,7 +111,7 @@ export function AdminUsuariosPage() {
                   <tr key={usuario.id}>
                     <td className="px-4 py-3 font-medium text-gray-900">
                       {usuario.username}
-                      {ehVoceMesma && <span className="ml-2 text-xs text-gray-400">(você)</span>}
+                      {ehVoceMesma && <span className="ml-2 text-xs text-texto-fraco">(você)</span>}
                     </td>
                     <td className="px-4 py-3 text-gray-600">{usuario.email}</td>
                     <td className="px-4 py-3">

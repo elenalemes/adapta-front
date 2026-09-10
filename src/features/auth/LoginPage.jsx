@@ -52,7 +52,7 @@ export function LoginPage() {
             id="email"
             type="email"
             autoComplete="email"
-            className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+            className="mt-1 w-full rounded-lg border border-borda px-3 py-2 focus:border-blue-500 focus:outline-none"
             {...register("email")}
           />
           {errors.email && (
@@ -68,7 +68,7 @@ export function LoginPage() {
             id="senha"
             type="password"
             autoComplete="current-password"
-            className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+            className="mt-1 w-full rounded-lg border border-borda px-3 py-2 focus:border-blue-500 focus:outline-none"
             {...register("senha")}
           />
           {errors.senha && (

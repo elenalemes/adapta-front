@@ -83,7 +83,7 @@ export function RedefinirSenhaPage() {
             id="novaSenha"
             type="password"
             autoComplete="new-password"
-            className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+            className="mt-1 w-full rounded-lg border border-borda px-3 py-2 focus:border-blue-500 focus:outline-none"
             {...register("novaSenha")}
           />
           {errors.novaSenha && (
@@ -102,7 +102,7 @@ export function RedefinirSenhaPage() {
             id="confirmarSenha"
             type="password"
             autoComplete="new-password"
-            className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+            className="mt-1 w-full rounded-lg border border-borda px-3 py-2 focus:border-blue-500 focus:outline-none"
             {...register("confirmarSenha")}
           />
           {errors.confirmarSenha && (

@@ -87,7 +87,7 @@ export function PostDetailPage() {
                 />
               )}
             </div>
-            <span className={autorRemovido ? "italic text-gray-400" : ""}>
+            <span className={autorRemovido ? "italic text-texto-fraco" : ""}>
               Por {postagem.username ?? "usuário excluído"}
             </span>
             <span>·</span>

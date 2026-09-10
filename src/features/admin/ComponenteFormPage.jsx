@@ -107,7 +107,7 @@ function ComponenteForm({ modoEdicao, id, componente, areas }) {
           </label>
           <input
             id="nome"
-            className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+            className="mt-1 w-full rounded-lg border border-borda px-3 py-2 focus:border-blue-500 focus:outline-none"
             {...register("nome")}
           />
           {errors.nome && <p className="mt-1 text-sm text-red-600">{errors.nome.message}</p>}
@@ -120,7 +120,7 @@ function ComponenteForm({ modoEdicao, id, componente, areas }) {
           <input
             id="codigo"
             placeholder="Ex.: LINGUA_PORTUGUESA"
-            className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 uppercase focus:border-blue-500 focus:outline-none"
+            className="mt-1 w-full rounded-lg border border-borda px-3 py-2 uppercase focus:border-blue-500 focus:outline-none"
             {...camposCodigo}
             onChange={(evento) => {
               evento.target.value = evento.target.value.toUpperCase();
@@ -140,7 +140,7 @@ function ComponenteForm({ modoEdicao, id, componente, areas }) {
           <textarea
             id="descricao"
             rows={3}
-            className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+            className="mt-1 w-full rounded-lg border border-borda px-3 py-2 focus:border-blue-500 focus:outline-none"
             {...register("descricao")}
           />
           {errors.descricao && (
@@ -154,7 +154,7 @@ function ComponenteForm({ modoEdicao, id, componente, areas }) {
           </label>
           <select
             id="areaId"
-            className="mt-1 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 focus:border-blue-500 focus:outline-none"
+            className="mt-1 w-full rounded-lg border border-borda bg-white px-3 py-2 focus:border-blue-500 focus:outline-none"
             {...register("areaId")}
           >
             <option value="">Selecione a área do conhecimento</option>
@@ -178,7 +178,7 @@ function ComponenteForm({ modoEdicao, id, componente, areas }) {
           <button
             type="button"
             onClick={() => navigate("/admin/componentes")}
-            className="rounded-full border border-gray-300 px-6 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+            className="rounded-full border border-borda px-6 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
           >
             Cancelar
           </button>

@@ -124,7 +124,7 @@ function PerfilConteudo({ usuario }) {
             type="button"
             onClick={() => inputFotoRef.current?.click()}
             disabled={enviandoFoto}
-            className="rounded-full border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50 disabled:opacity-50"
+            className="rounded-full border border-borda px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50 disabled:opacity-50"
           >
             {enviandoFoto ? "Enviando..." : "Trocar foto"}
           </button>
@@ -159,7 +159,7 @@ function PerfilConteudo({ usuario }) {
             </label>
             <input
               id="username"
-              className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+              className="mt-1 w-full rounded-lg border border-borda px-3 py-2 focus:border-blue-500 focus:outline-none"
               {...register("username")}
             />
             {errors.username && (
@@ -174,7 +174,7 @@ function PerfilConteudo({ usuario }) {
             <input
               id="email"
               type="email"
-              className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+              className="mt-1 w-full rounded-lg border border-borda px-3 py-2 focus:border-blue-500 focus:outline-none"
               {...register("email")}
             />
             {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>}

@@ -64,7 +64,7 @@ export function GameDetailPage() {
           <h2 className="text-sm font-semibold text-gray-900">
             Este jogo está de acordo com o currículo da BNCC!
           </h2>
-          <p className="mt-1 text-xs text-gray-500">
+          <p className="mt-1 text-xs text-gray-700">
             A BNCC organiza o currículo de aprendizado infantil em áreas do conhecimento
             categorias e componentes curriculares. Este jogo trabalha com:
           </p>
@@ -85,7 +85,7 @@ export function GameDetailPage() {
                         Componente curricular: {componente.nome}
                       </span>
                       {componente.descricao && (
-                        <span className="mt-0.5 block text-gray-500">{componente.descricao}</span>
+                        <span className="mt-0.5 block text-gray-700">{componente.descricao}</span>
                       )}
                     </span>
                   ))}
@@ -97,6 +97,7 @@ export function GameDetailPage() {
       )}
 
       <div className="mb-6">
+        <h2 className="sr-only">Jogar</h2>
         <VisualizadorJogo key={jogo.id} urlJogo={jogo.urlJogo} titulo={jogo.titulo} />
       </div>
 
@@ -105,6 +106,7 @@ export function GameDetailPage() {
         <BotaoFavoritar jogoId={jogo.id} favoritadoInicial={jogo.favoritado} />
       </div>
 
+      <h2 className="sr-only">Sobre o jogo</h2>
       <p className="mb-10 leading-relaxed text-gray-700">{jogo.descricao}</p>
 
       <div className="mb-10 border-t border-gray-100 pt-6">

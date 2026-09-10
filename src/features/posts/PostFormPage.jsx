@@ -102,7 +102,7 @@ function PostForm({ modoEdicao, id, postagem }) {
           </label>
           <input
             id="titulo"
-            className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+            className="mt-1 w-full rounded-lg border border-borda px-3 py-2 focus:border-blue-500 focus:outline-none"
             {...register("titulo")}
           />
           {errors.titulo && <p className="mt-1 text-sm text-red-600">{errors.titulo.message}</p>}
@@ -115,7 +115,7 @@ function PostForm({ modoEdicao, id, postagem }) {
           <textarea
             id="conteudo"
             rows={10}
-            className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+            className="mt-1 w-full rounded-lg border border-borda px-3 py-2 focus:border-blue-500 focus:outline-none"
             {...register("conteudo")}
           />
           {errors.conteudo && (
@@ -147,7 +147,7 @@ function PostForm({ modoEdicao, id, postagem }) {
           <button
             type="button"
             onClick={() => navigate("/blog")}
-            className="rounded-full border border-gray-300 px-6 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+            className="rounded-full border border-borda px-6 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
           >
             Cancelar
           </button>

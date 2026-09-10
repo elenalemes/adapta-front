@@ -28,7 +28,7 @@ export function PostCard({ postagem }) {
         <h3 className="font-semibold text-gray-900">{postagem.titulo}</h3>
         <p className="line-clamp-3 flex-1 text-sm text-gray-600">{postagem.conteudo}</p>
         <div className="flex items-center gap-2 pt-2 text-xs text-gray-500">
-          <span className={autorRemovido ? "italic text-gray-400" : ""}>
+          <span className={autorRemovido ? "italic text-texto-fraco" : ""}>
             Por {postagem.username ?? "usuário excluído"}
           </span>
           <span>·</span>

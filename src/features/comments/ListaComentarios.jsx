@@ -67,7 +67,7 @@ export function ListaComentarios({ comentarios, usuarioId, isAdmin, onEditar, on
               <div className="flex items-start justify-between gap-2">
                 <p
                   className={`text-sm font-medium ${
-                    autorRemovido ? "italic text-gray-400" : "text-gray-900"
+                    autorRemovido ? "italic text-texto-fraco" : "text-gray-900"
                   }`}
                 >
                   {comentario.username ?? "Usuário excluído"}
@@ -79,7 +79,7 @@ export function ListaComentarios({ comentarios, usuarioId, isAdmin, onEditar, on
                       <button
                         type="button"
                         onClick={() => setEditandoId(comentario.id)}
-                        className="text-gray-400 hover:text-blue-600"
+                        className="text-gray-500 hover:text-blue-600"
                         aria-label="Editar comentário"
                       >
                         <Pencil className="h-3.5 w-3.5" />
@@ -90,7 +90,7 @@ export function ListaComentarios({ comentarios, usuarioId, isAdmin, onEditar, on
                         type="button"
                         onClick={() => handleExcluir(comentario)}
                         disabled={excluindoId === comentario.id}
-                        className="text-gray-400 hover:text-red-600 disabled:opacity-50"
+                        className="text-gray-500 hover:text-red-600 disabled:opacity-50"
                         aria-label="Excluir comentário"
                       >
                         <Trash2 className="h-3.5 w-3.5" />
@@ -113,11 +113,11 @@ export function ListaComentarios({ comentarios, usuarioId, isAdmin, onEditar, on
               ) : (
                 <>
                   <p
-                    className={`text-sm ${autorRemovido ? "italic text-gray-400" : "text-gray-700"}`}
+                    className={`text-sm ${autorRemovido ? "italic text-texto-fraco" : "text-gray-700"}`}
                   >
                     {comentario.conteudo}
                   </p>
-                  <p className="mt-1 text-xs text-gray-400">{formatarData(comentario.data)}</p>
+                  <p className="mt-1 text-xs text-texto-fraco">{formatarData(comentario.data)}</p>
                 </>
               )}
             </div>

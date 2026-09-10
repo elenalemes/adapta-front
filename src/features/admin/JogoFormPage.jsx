@@ -144,7 +144,7 @@ function JogoForm({ modoEdicao, id, jogo, areas }) {
           </label>
           <input
             id="titulo"
-            className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+            className="mt-1 w-full rounded-lg border border-borda px-3 py-2 focus:border-blue-500 focus:outline-none"
             {...register("titulo")}
           />
           {errors.titulo && <p className="mt-1 text-sm text-red-600">{errors.titulo.message}</p>}
@@ -157,7 +157,7 @@ function JogoForm({ modoEdicao, id, jogo, areas }) {
           <textarea
             id="descricao"
             rows={4}
-            className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+            className="mt-1 w-full rounded-lg border border-borda px-3 py-2 focus:border-blue-500 focus:outline-none"
             {...register("descricao")}
           />
           {errors.descricao && (
@@ -172,7 +172,7 @@ function JogoForm({ modoEdicao, id, jogo, areas }) {
           <input
             id="urlJogo"
             placeholder="https://..."
-            className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+            className="mt-1 w-full rounded-lg border border-borda px-3 py-2 focus:border-blue-500 focus:outline-none"
             {...register("urlJogo")}
           />
           <p className="mt-1 text-xs text-gray-500">
@@ -187,7 +187,7 @@ function JogoForm({ modoEdicao, id, jogo, areas }) {
           <div className="mt-2 space-y-3">
             {areas.map((area) => (
               <div key={area.id}>
-                <p className="text-xs font-semibold uppercase text-gray-400">{area.nome}</p>
+                <p className="text-xs font-semibold uppercase text-texto-fraco">{area.nome}</p>
                 <div className="mt-1 flex flex-wrap gap-3">
                   {area.componentes.map((componente) => (
                     <label
@@ -198,7 +198,7 @@ function JogoForm({ modoEdicao, id, jogo, areas }) {
                         type="checkbox"
                         checked={componenteIds.includes(String(componente.id))}
                         onChange={() => alternarComponente(componente.id)}
-                        className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                        className="rounded border-borda text-blue-600 focus:ring-blue-500"
                       />
                       {componente.nome}
                     </label>
@@ -219,7 +219,7 @@ function JogoForm({ modoEdicao, id, jogo, areas }) {
               aria-label="Ano inicial"
               value={anoInicial}
               onChange={(evento) => setAnoInicial(evento.target.value)}
-              className="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+              className="rounded-lg border border-borda px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
             >
               <option value="">—</option>
               {ANOS.map((ano) => (
@@ -228,12 +228,12 @@ function JogoForm({ modoEdicao, id, jogo, areas }) {
                 </option>
               ))}
             </select>
-            <span className="text-gray-400">até</span>
+            <span className="text-texto-fraco">até</span>
             <select
               aria-label="Ano final"
               value={anoFinal}
               onChange={(evento) => setAnoFinal(evento.target.value)}
-              className="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+              className="rounded-lg border border-borda px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
             >
               <option value="">—</option>
               {ANOS.map((ano) => (
@@ -270,7 +270,7 @@ function JogoForm({ modoEdicao, id, jogo, areas }) {
           <button
             type="button"
             onClick={() => navigate("/admin/jogos")}
-            className="rounded-full border border-gray-300 px-6 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+            className="rounded-full border border-borda px-6 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
           >
             Cancelar
           </button>

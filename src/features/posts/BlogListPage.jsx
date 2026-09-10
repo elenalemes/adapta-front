@@ -34,6 +34,8 @@ export function BlogListPage() {
         )}
       </div>
 
+      <h2 className="sr-only">Postagens publicadas</h2>
+
       {isLoading && <p className="text-gray-500">Carregando...</p>}
 
       {!isLoading && postagens.length === 0 && (

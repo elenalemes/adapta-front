@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@theme {
+  --color-borda: #6A7282;
+  --color-texto-fraco: #4A5565;
+  --color-favorito: #992761;
+}
+
 body {
   margin: 0;
 }

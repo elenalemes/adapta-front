@@ -26,7 +26,7 @@ export function JogoCard({ jogo }) {
           {jogo.titulo}
         </Link>
       </h3>
-      <p className="text-xs font-medium text-gray-400">Sobre o jogo</p>
+      <p className="text-xs font-medium text-texto-fraco">Sobre o jogo</p>
 
       <div className="flex flex-wrap items-center justify-center gap-2">
         {tag && (

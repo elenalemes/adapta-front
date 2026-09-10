@@ -9,7 +9,7 @@ import {
 } from "../../shared/services/jogosApi";
 import { FiltroBNCC } from "./FiltroBNCC";
 import { JogoCard } from "./JogoCard";
-import bannerHome from "../../assets/BannerHome.png";
+import bannerHome from "../../assets/banner_atualizado.png";
 
 
 const TAMANHO_VITRINE = 8;
@@ -45,12 +45,22 @@ export function HomePage() {
 
   return (
     <div>
-      <section>
+      <section className="relative bg-[#00579D]">
         <img
           src={bannerHome}
-          alt="Adapta: jogos adaptados para brincar e aprender. Duas crianças sorridentes usando um laptop juntas."
+          alt=""
           className="h-60 w-full object-cover object-center sm:h-80 lg:h-[480px]"
         />
+        <div className="absolute inset-0 flex items-center">
+          <div className="mx-auto w-full max-w-6xl px-4">
+            <p className="text-sm font-medium text-white sm:text-base lg:text-lg">
+              Jogos adaptados
+            </p>
+            <h1 className="mt-1 max-w-[12ch] text-3xl font-bold leading-tight text-balance text-white sm:max-w-[14ch] sm:text-5xl lg:max-w-xl lg:text-6xl">
+              Para Brincar &amp; Aprender
+            </h1>
+          </div>
+        </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-12 text-center">

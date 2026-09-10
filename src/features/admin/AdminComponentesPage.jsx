@@ -76,9 +76,9 @@ export function AdminComponentesPage() {
       <div className="space-y-6">
         {areasAgrupadas.map((area) => (
           <div key={area.id} className="overflow-hidden rounded-2xl border border-gray-200">
-            <div className="bg-gray-50 px-4 py-2 text-xs font-semibold uppercase text-gray-500">
+            <h2 className="bg-gray-50 px-4 py-2 text-xs font-semibold uppercase text-gray-500">
               {area.nome}
-            </div>
+            </h2>
             <table className="w-full text-left text-sm">
               <tbody className="divide-y divide-gray-100">
                 {area.itens.map((componente) => (

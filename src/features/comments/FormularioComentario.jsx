@@ -42,7 +42,7 @@ export function FormularioComentario({
         placeholder={placeholder}
         rows={3}
         maxLength={1000}
-        className="w-full rounded-xl border border-gray-300 p-3 text-sm focus:border-blue-500 focus:outline-none"
+        className="w-full rounded-xl border border-borda p-3 text-sm focus:border-blue-500 focus:outline-none"
       />
       <div className="flex gap-3">
         <button
@@ -56,7 +56,7 @@ export function FormularioComentario({
           <button
             type="button"
             onClick={onCancelar}
-            className="rounded-full border border-gray-300 px-5 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+            className="rounded-full border border-borda px-5 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
           >
             Cancelar
           </button>

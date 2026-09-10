@@ -82,7 +82,7 @@ export function JogosCatalogPage() {
               value={textoBusca}
               onChange={(evento) => setTextoBusca(evento.target.value)}
               placeholder="Buscar jogo por título..."
-              className="w-full rounded-full border border-gray-300 px-4 py-2 text-sm focus:border-blue-500 focus:outline-none"
+              className="w-full rounded-full border border-borda px-4 py-2 text-sm focus:border-blue-500 focus:outline-none"
             />
             <button
               type="submit"
@@ -108,6 +108,8 @@ export function JogosCatalogPage() {
           />
         </div>
       </div>
+
+      <h2 className="sr-only">Jogos encontrados</h2>
 
       {isLoading && <p className="text-gray-500">Carregando...</p>}
 
