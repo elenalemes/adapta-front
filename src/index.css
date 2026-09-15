@@ -1,11 +1,86 @@
 @import "tailwindcss";
 
 @theme {
-  --color-borda: #6A7282;
-  --color-texto-fraco: #4A5565;
+
+  --font-sans: "Roboto Variable", "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+
+/*Google material design font*/
+  /* DISPLAY — texto gigante, tipo banner */
+  --text-display-lg: 3.5625rem;                 /* 57px */
+  --text-display-lg--line-height: 4rem;         /* 64px */
+  --text-display-md: 2.8125rem;                 /* 45px */
+  --text-display-md--line-height: 3.25rem;      /* 52px */
+  --text-display-sm: 2.25rem;                   /* 36px */
+  --text-display-sm--line-height: 2.75rem;      /* 44px */
+
+  /* HEADLINE — títulos de página e de seção */
+  --text-headline-lg: 2rem;                     /* 32px */
+  --text-headline-lg--line-height: 2.5rem;      /* 40px */
+  --text-headline-md: 1.75rem;                  /* 28px */
+  --text-headline-md--line-height: 2.25rem;     /* 36px */
+  --text-headline-sm: 1.5rem;                   /* 24px */
+  --text-headline-sm--line-height: 2rem;        /* 32px */
+
+  /* TITLE — títulos menores, de bloco e de card */
+  --text-title-lg: 1.375rem;                    /* 22px */
+  --text-title-lg--line-height: 1.75rem;        /* 28px */
+  --text-title-md: 1rem;                        /* 16px */
+  --text-title-md--line-height: 1.5rem;         /* 24px */
+  --text-title-md--font-weight: 500;
+  --text-title-sm: 0.875rem;                    /* 14px */
+  --text-title-sm--line-height: 1.25rem;        /* 20px */
+  --text-title-sm--font-weight: 500;
+
+  /* BODY — texto corrido */
+  --text-body-lg: 1rem;                         /* 16px ⭐ */
+  --text-body-lg--line-height: 1.5rem;          /* 24px */
+  --text-body-md: 0.875rem;                     /* 14px */
+  --text-body-md--line-height: 1.25rem;         /* 20px */
+  --text-body-sm: 0.75rem;                      /* 12px — piso */
+  --text-body-sm--line-height: 1rem;            /* 16px */
+
+  /* LABEL — botões, menus, etiquetas*/
+  --text-label-lg: 0.875rem;                    /* 14px ⭐ botões */
+  --text-label-lg--line-height: 1.25rem;        /* 20px */
+  --text-label-lg--font-weight: 500;
+  --text-label-md: 0.75rem;                     /* 12px */
+  --text-label-md--line-height: 1rem;           /* 16px */
+  --text-label-md--font-weight: 500;
+  --text-label-sm: 0.6875rem;                   /* 11px — mínimo */
+  --text-label-sm--line-height: 1rem;           /* 16px */
+  --text-label-sm--font-weight: 500;
+
+  /* CORES */
+  --color-borda: #6A7282;         /* 4,84:1 sobre branco ✅ */
+  --color-texto-fraco: #4A5565;   /* 7,56:1 sobre branco ✅ */
   --color-favorito: #992761;
+  --color-foco: #0B3D91;
+}
+
+
+html {
+  font-size: 100%;
 }
 
 body {
   margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-body-lg);   /* 16px de leitura por padrão */
+  line-height: 1.5;
+}
+
+
+:focus-visible {
+  outline: 3px solid var(--color-foco) !important;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
