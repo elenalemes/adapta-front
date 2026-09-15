@@ -9,6 +9,7 @@ import {
   excluirConta,
 } from "../../shared/services/usersApi";
 import { mensagemDeErro } from "../../shared/utils/apiErrors";
+import { BotaoIcone } from "../../shared/components/Botao";
 
 const TAMANHO_PAGINA = 20;
 
@@ -80,25 +81,27 @@ export function AdminUsuariosPage() {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-10">
-      <h1 className="mb-6 text-2xl font-bold text-gray-900">Usuários</h1>
+      <h1 className="mb-6 text-headline-sm font-bold text-gray-900">Usuários</h1>
 
       {erro && (
-        <p className="mb-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700" role="alert">
+        <p className="mb-4 rounded-lg bg-red-50 px-3 py-2 text-body-md text-red-700" role="alert">
           {erro}
         </p>
       )}
 
-      {isLoading && <p className="text-gray-500">Carregando...</p>}
+      {isLoading && <p className="text-body-lg text-gray-500">Carregando...</p>}
 
       {!isLoading && usuarios.length > 0 && (
-        <div className="overflow-hidden rounded-2xl border border-gray-200">
-          <table className="w-full text-left text-sm">
-            <thead className="bg-gray-50 text-gray-600">
+        <div className="overflow-x-auto rounded-2xl border border-gray-200">
+          <table className="w-full min-w-[36rem] text-left text-body-md">
+            <thead className="bg-gray-50 text-gray-700">
               <tr>
-                <th className="px-4 py-3 font-medium">Usuário</th>
-                <th className="px-4 py-3 font-medium">E-mail</th>
-                <th className="px-4 py-3 font-medium">Perfil</th>
-                <th className="px-4 py-3 font-medium" />
+                <th className="px-4 py-3 text-title-sm">Usuário</th>
+                <th className="px-4 py-3 text-title-sm">E-mail</th>
+                <th className="px-4 py-3 text-title-sm">Perfil</th>
+                <th className="px-4 py-3">
+                  <span className="sr-only">Ações</span>
+                </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
@@ -109,26 +112,28 @@ export function AdminUsuariosPage() {
 
                 return (
                   <tr key={usuario.id}>
-                    <td className="px-4 py-3 font-medium text-gray-900">
+                    <td className="px-4 py-3 text-title-sm text-gray-900">
                       {usuario.username}
-                      {ehVoceMesma && <span className="ml-2 text-xs text-texto-fraco">(você)</span>}
+                      {ehVoceMesma && (
+                        <span className="ml-2 text-body-md text-texto-fraco">(você)</span>
+                      )}
                     </td>
-                    <td className="px-4 py-3 text-gray-600">{usuario.email}</td>
+                    <td className="px-4 py-3 text-gray-700">{usuario.email}</td>
                     <td className="px-4 py-3">
                       {admin ? (
-                        <span className="rounded-full bg-blue-100 px-2 py-1 text-xs font-medium text-blue-700">
+                        <span className="rounded-full bg-blue-100 px-2 py-1 text-label-md text-blue-700">
                           Administrador
                         </span>
                       ) : (
-                        <span className="rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600">
+                        <span className="rounded-full bg-gray-100 px-2 py-1 text-label-md text-gray-700">
                           Usuário
                         </span>
                       )}
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center justify-end gap-3">
+                      <div className="flex items-center justify-end">
                         {admin ? (
-                          <button
+                          <BotaoIcone
                             type="button"
                             onClick={() => handleRemoverAdmin(usuario)}
                             disabled={ehVoceMesma || emAcao}
@@ -137,33 +142,33 @@ export function AdminUsuariosPage() {
                                 ? "Você não pode remover seu próprio acesso de administrador"
                                 : "Remover acesso de administrador"
                             }
-                            className="text-gray-500 hover:text-amber-600 disabled:opacity-30"
+                            className="text-gray-600 hover:text-amber-800"
                             aria-label={`Remover admin de ${usuario.username}`}
                           >
-                            <ShieldOff className="h-4 w-4" />
-                          </button>
+                            <ShieldOff className="h-4 w-4" aria-hidden="true" />
+                          </BotaoIcone>
                         ) : (
-                          <button
+                          <BotaoIcone
                             type="button"
                             onClick={() => handlePromover(usuario)}
                             disabled={emAcao}
                             title="Promover a administrador"
-                            className="text-gray-500 hover:text-blue-600 disabled:opacity-30"
+                            className="text-gray-600 hover:text-blue-700"
                             aria-label={`Promover ${usuario.username} a admin`}
                           >
-                            <ShieldCheck className="h-4 w-4" />
-                          </button>
+                            <ShieldCheck className="h-4 w-4" aria-hidden="true" />
+                          </BotaoIcone>
                         )}
-                        <button
+                        <BotaoIcone
                           type="button"
                           onClick={() => handleExcluir(usuario)}
                           disabled={emAcao}
                           title="Excluir conta"
-                          className="text-gray-500 hover:text-red-600 disabled:opacity-30"
+                          className="text-gray-600 hover:text-red-700"
                           aria-label={`Excluir ${usuario.username}`}
                         >
-                          <Trash2 className="h-4 w-4" />
-                        </button>
+                          <Trash2 className="h-4 w-4" aria-hidden="true" />
+                        </BotaoIcone>
                       </div>
                     </td>
                   </tr>
@@ -180,18 +185,18 @@ export function AdminUsuariosPage() {
             type="button"
             onClick={() => setPagina((p) => Math.max(0, p - 1))}
             disabled={data.primeira}
-            className="text-sm font-medium text-blue-600 hover:underline disabled:text-gray-300 disabled:no-underline"
+            className="inline-flex min-h-11 items-center px-2 text-label-lg text-blue-700 hover:underline disabled:text-gray-400 disabled:no-underline"
           >
             Anterior
           </button>
-          <span className="text-sm text-gray-500">
+          <span className="text-body-md text-gray-600" role="status">
             Página {data.pagina + 1} de {data.totalPaginas}
           </span>
           <button
             type="button"
             onClick={() => setPagina((p) => p + 1)}
             disabled={data.ultima}
-            className="text-sm font-medium text-blue-600 hover:underline disabled:text-gray-300 disabled:no-underline"
+            className="inline-flex min-h-11 items-center px-2 text-label-lg text-blue-700 hover:underline disabled:text-gray-400 disabled:no-underline"
           >
             Próxima
           </button>

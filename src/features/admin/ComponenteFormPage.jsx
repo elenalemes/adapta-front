@@ -11,6 +11,8 @@ import {
   atualizarComponente,
 } from "../../shared/services/componentesApi";
 import { aplicarErrosDeValidacao, mensagemDeErro } from "../../shared/utils/apiErrors";
+import { Campo, Selecao } from "../../shared/components/Campo";
+import { Botao } from "../../shared/components/Botao";
 
 
 export function ComponenteFormPage() {
@@ -25,7 +27,7 @@ export function ComponenteFormPage() {
   });
 
   if ((modoEdicao && carregandoComponente) || !areas) {
-    return <p className="px-4 py-24 text-center text-gray-500">Carregando...</p>;
+    return <p className="px-4 py-24 text-center text-body-lg text-gray-500">Carregando...</p>;
   }
 
   return (
@@ -76,7 +78,7 @@ function ComponenteForm({ modoEdicao, id, componente, areas }) {
       } else {
         await criarComponente(dto);
       }
-  
+
       queryClient.invalidateQueries({ queryKey: ["areas"] });
       queryClient.invalidateQueries({ queryKey: ["admin", "componentes"] });
       navigate("/admin/componentes");
@@ -90,98 +92,67 @@ function ComponenteForm({ modoEdicao, id, componente, areas }) {
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-10">
-      <h1 className="mb-6 text-2xl font-bold text-gray-900">
+      <h1 className="mb-6 text-headline-sm font-bold text-gray-900">
         {modoEdicao ? "Editar componente curricular" : "Novo componente curricular"}
       </h1>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
         {erroApi && (
-          <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700" role="alert">
+          <p className="rounded-lg bg-red-50 px-3 py-2 text-body-md text-red-700" role="alert">
             {erroApi}
           </p>
         )}
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700" htmlFor="nome">
-            Nome
-          </label>
-          <input
-            id="nome"
-            className="mt-1 w-full rounded-lg border border-borda px-3 py-2 focus:border-blue-500 focus:outline-none"
-            {...register("nome")}
-          />
-          {errors.nome && <p className="mt-1 text-sm text-red-600">{errors.nome.message}</p>}
-        </div>
+        <Campo id="nome" label="Nome" erro={errors.nome?.message} {...register("nome")} />
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700" htmlFor="codigo">
-            Código
-          </label>
-          <input
-            id="codigo"
-            placeholder="Ex.: LINGUA_PORTUGUESA"
-            className="mt-1 w-full rounded-lg border border-borda px-3 py-2 uppercase focus:border-blue-500 focus:outline-none"
-            {...camposCodigo}
-            onChange={(evento) => {
-              evento.target.value = evento.target.value.toUpperCase();
-              onChangeCodigo(evento);
-            }}
-          />
-          <p className="mt-1 text-xs text-gray-500">
-            Só letras maiúsculas, números e underscore.
-          </p>
-          {errors.codigo && <p className="mt-1 text-sm text-red-600">{errors.codigo.message}</p>}
-        </div>
+        <Campo
+          id="codigo"
+          label="Código"
+          placeholder="Ex.: LINGUA_PORTUGUESA"
+          className="uppercase"
+          ajuda="Só letras maiúsculas, números e underscore."
+          erro={errors.codigo?.message}
+          {...camposCodigo}
+          onChange={(evento) => {
+            evento.target.value = evento.target.value.toUpperCase();
+            onChangeCodigo(evento);
+          }}
+        />
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700" htmlFor="descricao">
-            Descrição (opcional)
-          </label>
-          <textarea
-            id="descricao"
-            rows={3}
-            className="mt-1 w-full rounded-lg border border-borda px-3 py-2 focus:border-blue-500 focus:outline-none"
-            {...register("descricao")}
-          />
-          {errors.descricao && (
-            <p className="mt-1 text-sm text-red-600">{errors.descricao.message}</p>
-          )}
-        </div>
+        <Campo
+          id="descricao"
+          label="Descrição (opcional)"
+          multilinha
+          rows={3}
+          erro={errors.descricao?.message}
+          {...register("descricao")}
+        />
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700" htmlFor="areaId">
-            Área do conhecimento
-          </label>
-          <select
-            id="areaId"
-            className="mt-1 w-full rounded-lg border border-borda bg-white px-3 py-2 focus:border-blue-500 focus:outline-none"
-            {...register("areaId")}
-          >
-            <option value="">Selecione a área do conhecimento</option>
-            {areas.map((area) => (
-              <option key={area.id} value={area.id}>
-                {area.nome}
-              </option>
-            ))}
-          </select>
-          {errors.areaId && <p className="mt-1 text-sm text-red-600">{errors.areaId.message}</p>}
-        </div>
+        <Selecao
+          id="areaId"
+          label="Área do conhecimento"
+          erro={errors.areaId?.message}
+          {...register("areaId")}
+        >
+          <option value="">Selecione a área do conhecimento</option>
+          {areas.map((area) => (
+            <option key={area.id} value={area.id}>
+              {area.nome}
+            </option>
+          ))}
+        </Selecao>
 
-        <div className="flex gap-3">
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="rounded-full bg-blue-600 px-6 py-2 text-sm font-medium text-white transition hover:bg-blue-700 disabled:opacity-50"
-          >
+        <div className="flex flex-wrap gap-3">
+          <Botao type="submit" disabled={isSubmitting}>
             {isSubmitting ? "Salvando..." : "Salvar"}
-          </button>
-          <button
+          </Botao>
+          <Botao
             type="button"
+            variante="secundario"
             onClick={() => navigate("/admin/componentes")}
-            className="rounded-full border border-borda px-6 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
           >
             Cancelar
-          </button>
+          </Botao>
         </div>
       </form>
     </div>
