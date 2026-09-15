@@ -79,7 +79,7 @@ function ContaMenu() {
         to="/entrar"
         className="inline-flex min-h-11 items-center rounded-full border border-blue-600 bg-white px-5 text-label-lg text-blue-700 shadow-sm transition hover:bg-blue-50"
       >
-        Entrar
+        Entrar | Criar uma conta
       </Link>
     );
   }
