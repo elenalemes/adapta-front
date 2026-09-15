@@ -8,7 +8,7 @@ export function JogoCard({ jogo }) {
   return (
     <div className="relative flex flex-col items-center gap-3 rounded-2xl border border-gray-100 p-6 text-center shadow-sm transition hover:shadow-md">
       {emDesenvolvimento && (
-        <span className="rounded-full bg-gray-200 px-3 py-1 text-xs font-medium text-gray-600">
+        <span className="rounded-full bg-gray-200 px-3 py-1 text-label-md text-gray-600">
           Em desenvolvimento
         </span>
       )}
@@ -21,21 +21,21 @@ export function JogoCard({ jogo }) {
         )}
       </div>
 
-      <h3 className="font-semibold text-gray-900">
+      <h3 className="text-title-md text-gray-900">
         <Link to={`/jogos/${jogo.id}`} className="after:absolute after:inset-0">
           {jogo.titulo}
         </Link>
       </h3>
-      <p className="text-xs font-medium text-texto-fraco">Sobre o jogo</p>
+      <p className="text-label-lg text-texto-fraco">Sobre o jogo</p>
 
       <div className="flex flex-wrap items-center justify-center gap-2">
         {tag && (
-          <span className="rounded-full border border-black bg-yellow-400 px-3 py-1 text-xs font-medium text-black">
+          <span className="rounded-full border border-black bg-yellow-400 px-3 py-1 text-label-lg text-black">
             #{tag.replace(/\s+/g, "")}
           </span>
         )}
         {jogo.anoInicial && jogo.anoFinal && (
-          <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700">
+          <span className="rounded-full bg-gray-100 px-3 py-1 text-label-lg text-gray-700">
             {jogo.anoInicial}º ao {jogo.anoFinal}º ano
           </span>
         )}
@@ -43,7 +43,7 @@ export function JogoCard({ jogo }) {
 
       <Link
         to={`/jogos/${jogo.id}`}
-        className="relative z-10 mt-1 inline-flex items-center gap-2 rounded-full bg-blue-600 px-[76px] py-2 text-sm font-medium text-white transition hover:bg-blue-700"
+        className="relative z-10 mt-1 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-6 text-label-lg text-white transition hover:bg-blue-700"
       >
         <Play className="h-4 w-4" fill="currentColor" aria-hidden="true" />
         Jogar

@@ -53,10 +53,10 @@ export function HomePage() {
         />
         <div className="absolute inset-0 flex items-center">
           <div className="mx-auto w-full max-w-6xl px-4">
-            <p className="text-sm font-medium text-white sm:text-base lg:text-lg">
+            <p className="text-label-lg text-white sm:text-title-md lg:text-title-lg">
               Jogos adaptados
             </p>
-            <h1 className="mt-1 max-w-[12ch] text-3xl font-bold leading-tight text-balance text-white sm:max-w-[14ch] sm:text-5xl lg:max-w-xl lg:text-6xl">
+            <h1 className="mt-1 max-w-[12ch] text-headline-lg font-bold text-balance text-white sm:max-w-[14ch] sm:text-display-md lg:max-w-xl lg:text-display-lg">
               Para Brincar &amp; Aprender
             </h1>
           </div>
@@ -64,7 +64,7 @@ export function HomePage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-12 text-center">
-        <h2 className="text-xl font-bold text-gray-900">
+        <h2 className="text-headline-sm font-bold text-gray-900">
           Busque jogos por categoria da BNCC!
         </h2>
 
@@ -80,10 +80,10 @@ export function HomePage() {
 
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {carregandoJogos && (
-            <p className="col-span-full text-gray-500">Carregando jogos...</p>
+            <p className="col-span-full text-body-lg text-gray-500">Carregando jogos...</p>
           )}
           {!carregandoJogos && jogos.length === 0 && (
-            <p className="col-span-full text-gray-500">
+            <p className="col-span-full text-body-lg text-gray-500">
               Nenhum jogo encontrado para esse filtro.
             </p>
           )}
@@ -94,7 +94,7 @@ export function HomePage() {
 
         <Link
           to="/jogos"
-          className="mt-10 inline-block rounded-full border border-blue-600 px-6 py-2 text-sm font-medium text-blue-700 transition hover:bg-blue-50"
+          className="mt-10 inline-flex min-h-11 items-center rounded-full border border-blue-600 px-6 text-label-lg text-blue-700 transition hover:bg-blue-50"
         >
           Ver catálogo completo
         </Link>
@@ -102,13 +102,13 @@ export function HomePage() {
 
       <section className="mx-auto max-w-6xl px-4 pb-16">
         <div className="rounded-3xl bg-blue-50 px-6 py-10 text-center sm:px-12">
-          <h2 className="text-xl font-bold text-gray-900">O Adapta vai até você!</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-gray-700">
+          <h2 className="text-headline-sm font-bold text-gray-900">O Adapta vai até você!</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-body-lg text-gray-700">
             O Adapta é um projeto educacional que torna a educação por meio de tecnologia mais
             acessível para todas as crianças! Se quiser saber mais ou precisa de ajuda com algum
             dos nossos jogos, entre em contato com a nossa equipe!
           </p>
-          <div className="mt-6 text-sm text-gray-600">
+          <div className="mt-6 text-body-md text-gray-600">
             <p>Responsável: Elena Lemes</p>
             <a
               href="mailto:elenavieiralemes@gmail.com"

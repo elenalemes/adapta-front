@@ -25,7 +25,7 @@ export function Navbar() {
             <Link
               key={link.to}
               to={link.to}
-              className="text-sm font-medium text-gray-700 transition hover:text-blue-700"
+              className="inline-flex min-h-11 items-center text-label-lg text-gray-700 transition hover:text-blue-700"
             >
               {link.label}
             </Link>
@@ -40,7 +40,7 @@ export function Navbar() {
             aria-expanded={menuAberto}
             aria-controls="menu-mobile"
             aria-label={menuAberto ? "Fechar menu" : "Abrir menu"}
-            className="text-gray-700 md:hidden"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center text-gray-700 md:hidden"
           >
             {menuAberto ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -58,7 +58,7 @@ export function Navbar() {
               key={link.to}
               to={link.to}
               onClick={() => setMenuAberto(false)}
-              className="block px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50"
+              className="flex min-h-11 items-center px-4 py-3 text-label-lg text-gray-700 hover:bg-gray-50"
             >
               {link.label}
             </Link>
@@ -77,7 +77,7 @@ function ContaMenu() {
     return (
       <Link
         to="/entrar"
-        className="rounded-full border border-blue-600 bg-white px-5 py-2 text-sm font-medium text-blue-700 shadow-sm transition hover:bg-blue-50"
+        className="inline-flex min-h-11 items-center rounded-full border border-blue-600 bg-white px-5 text-label-lg text-blue-700 shadow-sm transition hover:bg-blue-50"
       >
         Entrar
       </Link>
@@ -91,7 +91,7 @@ function ContaMenu() {
         onClick={() => setAberto((valor) => !valor)}
         aria-expanded={aberto}
         aria-haspopup="menu"
-        className="rounded-full border border-gray-200 bg-white px-5 py-2 text-sm font-medium text-blue-700 shadow-sm transition hover:bg-blue-50"
+        className="inline-flex min-h-11 items-center rounded-full border border-gray-200 bg-white px-5 text-label-lg text-blue-700 shadow-sm transition hover:bg-blue-50"
       >
         {carregandoUsuario ? "Carregando..." : (usuario?.username ?? "Minha conta")}
       </button>
@@ -105,7 +105,7 @@ function ContaMenu() {
             to="/perfil"
             role="menuitem"
             onClick={() => setAberto(false)}
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+            className="flex min-h-11 items-center px-4 text-body-md text-gray-700 hover:bg-gray-50"
           >
             Meu perfil
           </Link>
@@ -114,7 +114,7 @@ function ContaMenu() {
               to="/admin/jogos"
               role="menuitem"
               onClick={() => setAberto(false)}
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              className="flex min-h-11 items-center px-4 text-body-md text-gray-700 hover:bg-gray-50"
             >
               Painel admin
             </Link>
@@ -126,7 +126,7 @@ function ContaMenu() {
               sair();
               setAberto(false);
             }}
-            className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-50"
+            className="flex min-h-11 w-full items-center px-4 text-left text-body-md text-gray-700 hover:bg-gray-50"
           >
             Sair
           </button>
