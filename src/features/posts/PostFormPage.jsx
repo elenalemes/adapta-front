@@ -12,6 +12,8 @@ import {
 } from "./postagensApi";
 import { useAuth } from "../../shared/hooks/useAuth";
 import { aplicarErrosDeValidacao, mensagemDeErro } from "../../shared/utils/apiErrors";
+import { Campo } from "../../shared/components/Campo";
+import { Botao } from "../../shared/components/Botao";
 
 export function PostFormPage() {
   const { id } = useParams();
@@ -25,14 +27,16 @@ export function PostFormPage() {
   });
 
   if (modoEdicao && isLoading) {
-    return <p className="px-4 py-24 text-center text-gray-500">Carregando...</p>;
+    return <p className="px-4 py-24 text-center text-body-lg text-gray-500">Carregando...</p>;
   }
 
   if (modoEdicao && postagem && usuario?.id !== postagem.userId) {
     return (
       <div className="px-4 py-24 text-center">
-        <h1 className="text-xl font-bold text-gray-900">Acesso restrito</h1>
-        <p className="mt-2 text-gray-600">Você só pode editar as próprias postagens.</p>
+        <h1 className="text-headline-sm font-bold text-gray-900">Acesso restrito</h1>
+        <p className="mt-2 text-body-lg text-gray-600">
+          Você só pode editar as próprias postagens.
+        </p>
       </div>
     );
   }
@@ -85,46 +89,35 @@ function PostForm({ modoEdicao, id, postagem }) {
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-10">
-      <h1 className="mb-6 text-2xl font-bold text-gray-900">
+      <h1 className="mb-6 text-headline-sm font-bold text-gray-900">
         {modoEdicao ? "Editar postagem" : "Nova postagem"}
       </h1>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
         {erroApi && (
-          <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700" role="alert">
+          <p className="rounded-lg bg-red-50 px-3 py-2 text-body-md text-red-700" role="alert">
             {erroApi}
           </p>
         )}
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700" htmlFor="titulo">
-            Título
-          </label>
-          <input
-            id="titulo"
-            className="mt-1 w-full rounded-lg border border-borda px-3 py-2 focus:border-blue-500 focus:outline-none"
-            {...register("titulo")}
-          />
-          {errors.titulo && <p className="mt-1 text-sm text-red-600">{errors.titulo.message}</p>}
-        </div>
+        <Campo
+          id="titulo"
+          label="Título"
+          erro={errors.titulo?.message}
+          {...register("titulo")}
+        />
+
+        <Campo
+          id="conteudo"
+          label="Conteúdo"
+          multilinha
+          rows={10}
+          erro={errors.conteudo?.message}
+          {...register("conteudo")}
+        />
 
         <div>
-          <label className="block text-sm font-medium text-gray-700" htmlFor="conteudo">
-            Conteúdo
-          </label>
-          <textarea
-            id="conteudo"
-            rows={10}
-            className="mt-1 w-full rounded-lg border border-borda px-3 py-2 focus:border-blue-500 focus:outline-none"
-            {...register("conteudo")}
-          />
-          {errors.conteudo && (
-            <p className="mt-1 text-sm text-red-600">{errors.conteudo.message}</p>
-          )}
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700" htmlFor="imagem">
+          <label className="block text-title-sm text-gray-700" htmlFor="imagem">
             Capa da postagem (opcional, até 10MB — jpg, jpeg, png ou webp)
           </label>
           <input
@@ -132,25 +125,17 @@ function PostForm({ modoEdicao, id, postagem }) {
             type="file"
             accept="image/jpeg,image/png,image/webp"
             onChange={(evento) => setArquivoImagem(evento.target.files?.[0] ?? null)}
-            className="mt-1 block w-full text-sm text-gray-600 file:mr-3 file:rounded-full file:border-0 file:bg-blue-600 file:px-4 file:py-2 file:text-sm file:font-medium file:text-white file:transition hover:file:bg-blue-700"
+            className="mt-1 block w-full text-body-md text-gray-600 file:mr-3 file:min-h-11 file:rounded-full file:border-0 file:bg-blue-600 file:px-4 file:text-label-lg file:text-white file:transition hover:file:bg-blue-700"
           />
         </div>
 
-        <div className="flex gap-3">
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="rounded-full bg-blue-600 px-6 py-2 text-sm font-medium text-white transition hover:bg-blue-700 disabled:opacity-50"
-          >
+        <div className="flex flex-wrap gap-3">
+          <Botao type="submit" disabled={isSubmitting}>
             {isSubmitting ? "Salvando..." : "Publicar"}
-          </button>
-          <button
-            type="button"
-            onClick={() => navigate("/blog")}
-            className="rounded-full border border-borda px-6 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-          >
+          </Botao>
+          <Botao type="button" variante="secundario" onClick={() => navigate("/blog")}>
             Cancelar
-          </button>
+          </Botao>
         </div>
       </form>
     </div>

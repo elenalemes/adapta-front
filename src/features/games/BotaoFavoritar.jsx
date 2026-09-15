@@ -13,7 +13,7 @@ export function BotaoFavoritar({ jogoId, favoritadoInicial }) {
     return (
       <Link
         to="/entrar"
-        className="flex items-center gap-2 rounded-full border border-borda px-4 py-2 text-sm text-gray-600 transition hover:bg-gray-50"
+        className="inline-flex min-h-11 items-center gap-2 rounded-full border border-borda px-6 text-label-lg text-gray-700 transition hover:bg-gray-50"
       >
         <Heart className="h-4 w-4" aria-hidden="true" />
         Favoritar
@@ -45,10 +45,10 @@ export function BotaoFavoritar({ jogoId, favoritadoInicial }) {
       onClick={alternar}
       disabled={enviando}
       aria-pressed={favoritado}
-      className={`flex items-center gap-2 rounded-full border px-4 py-2 text-sm transition disabled:opacity-50 ${
+      className={`inline-flex min-h-11 items-center gap-2 rounded-full border px-6 text-label-lg transition disabled:opacity-50 ${
         favoritado
           ? "border-favorito bg-pink-50 text-favorito"
-          : "border-borda text-gray-600 hover:bg-gray-50"
+          : "border-borda text-gray-700 hover:bg-gray-50"
       }`}
     >
       <Heart className="h-4 w-4" fill={favoritado ? "currentColor" : "none"} aria-hidden="true" />

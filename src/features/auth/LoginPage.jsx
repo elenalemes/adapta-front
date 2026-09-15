@@ -6,6 +6,8 @@ import { loginSchema } from "./schemas";
 import { login } from "./authApi";
 import { useAuth } from "../../shared/hooks/useAuth";
 import { mensagemDeErro } from "../../shared/utils/apiErrors";
+import { Campo } from "../../shared/components/Campo";
+import { Botao } from "../../shared/components/Botao";
 
 export function LoginPage() {
   const { entrar } = useAuth();
@@ -36,63 +38,47 @@ export function LoginPage() {
         className="w-full max-w-sm space-y-4 rounded-2xl border border-gray-200 p-8 shadow-sm"
         noValidate
       >
-        <h1 className="text-2xl font-bold text-gray-900">Entrar</h1>
+        <h1 className="text-headline-sm font-bold text-gray-900">Entrar</h1>
 
         {erroApi && (
-          <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700" role="alert">
+          <p className="rounded-lg bg-red-50 px-3 py-2 text-body-md text-red-700" role="alert">
             {erroApi}
           </p>
         )}
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700" htmlFor="email">
-            E-mail
-          </label>
-          <input
-            id="email"
-            type="email"
-            autoComplete="email"
-            className="mt-1 w-full rounded-lg border border-borda px-3 py-2 focus:border-blue-500 focus:outline-none"
-            {...register("email")}
-          />
-          {errors.email && (
-            <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
-          )}
-        </div>
+        <Campo
+          id="email"
+          label="E-mail"
+          type="email"
+          autoComplete="email"
+          erro={errors.email?.message}
+          {...register("email")}
+        />
 
         <div>
-          <label className="block text-sm font-medium text-gray-700" htmlFor="senha">
-            Senha
-          </label>
-          <input
+          <Campo
             id="senha"
+            label="Senha"
             type="password"
             autoComplete="current-password"
-            className="mt-1 w-full rounded-lg border border-borda px-3 py-2 focus:border-blue-500 focus:outline-none"
+            erro={errors.senha?.message}
             {...register("senha")}
           />
-          {errors.senha && (
-            <p className="mt-1 text-sm text-red-600">{errors.senha.message}</p>
-          )}
           <Link
             to="/esqueci-senha"
-            className="mt-1 inline-block text-xs text-blue-600 hover:underline"
+            className="mt-1 inline-block py-2 text-body-md text-blue-700 hover:underline"
           >
             Esqueci minha senha
           </Link>
         </div>
 
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full rounded-full bg-blue-600 px-4 py-2 font-medium text-white transition hover:bg-blue-700 disabled:opacity-50"
-        >
+        <Botao type="submit" disabled={isSubmitting} className="w-full">
           {isSubmitting ? "Entrando..." : "Entrar"}
-        </button>
+        </Botao>
 
-        <p className="text-center text-sm text-gray-600">
+        <p className="text-center text-body-md text-gray-600">
           Não tem conta?{" "}
-          <Link to="/cadastro" className="text-blue-600 hover:underline">
+          <Link to="/cadastro" className="text-blue-700 hover:underline">
             Cadastre-se
           </Link>
         </p>

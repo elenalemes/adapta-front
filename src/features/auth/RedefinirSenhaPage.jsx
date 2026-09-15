@@ -5,6 +5,8 @@ import { Link, useSearchParams } from "react-router-dom";
 import { redefinirSenhaSchema } from "./schemas";
 import { redefinirSenha } from "./authApi";
 import { mensagemDeErro } from "../../shared/utils/apiErrors";
+import { Campo } from "../../shared/components/Campo";
+import { Botao } from "../../shared/components/Botao";
 
 export function RedefinirSenhaPage() {
   const [searchParams] = useSearchParams();
@@ -33,12 +35,15 @@ export function RedefinirSenhaPage() {
     return (
       <div className="flex items-center justify-center bg-white px-4 py-16">
         <div className="w-full max-w-sm space-y-4 rounded-2xl border border-gray-200 p-8 text-center shadow-sm">
-          <h1 className="text-2xl font-bold text-gray-900">Link inválido</h1>
-          <p className="text-gray-600">
+          <h1 className="text-headline-sm font-bold text-gray-900">Link inválido</h1>
+          <p className="text-body-lg text-gray-600">
             Esse link de redefinição está incompleto. Peça um novo na tela de recuperação de
             senha.
           </p>
-          <Link to="/esqueci-senha" className="text-blue-600 hover:underline">
+          <Link
+            to="/esqueci-senha"
+            className="inline-block py-2 text-body-lg text-blue-700 hover:underline"
+          >
             Pedir novo link
           </Link>
         </div>
@@ -50,9 +55,9 @@ export function RedefinirSenhaPage() {
     return (
       <div className="flex items-center justify-center bg-white px-4 py-16">
         <div className="w-full max-w-sm space-y-4 rounded-2xl border border-gray-200 p-8 text-center shadow-sm">
-          <h1 className="text-2xl font-bold text-gray-900">Senha redefinida!</h1>
-          <p className="text-gray-600">Você já pode entrar com a nova senha.</p>
-          <Link to="/entrar" className="text-blue-600 hover:underline">
+          <h1 className="text-headline-sm font-bold text-gray-900">Senha redefinida!</h1>
+          <p className="text-body-lg text-gray-600">Você já pode entrar com a nova senha.</p>
+          <Link to="/entrar" className="inline-block py-2 text-body-lg text-blue-700 hover:underline">
             Ir para o login
           </Link>
         </div>
@@ -67,56 +72,36 @@ export function RedefinirSenhaPage() {
         className="w-full max-w-sm space-y-4 rounded-2xl border border-gray-200 p-8 shadow-sm"
         noValidate
       >
-        <h1 className="text-2xl font-bold text-gray-900">Nova senha</h1>
+        <h1 className="text-headline-sm font-bold text-gray-900">Nova senha</h1>
 
         {erroApi && (
-          <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700" role="alert">
+          <p className="rounded-lg bg-red-50 px-3 py-2 text-body-md text-red-700" role="alert">
             {erroApi}
           </p>
         )}
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700" htmlFor="novaSenha">
-            Nova senha
-          </label>
-          <input
-            id="novaSenha"
-            type="password"
-            autoComplete="new-password"
-            className="mt-1 w-full rounded-lg border border-borda px-3 py-2 focus:border-blue-500 focus:outline-none"
-            {...register("novaSenha")}
-          />
-          {errors.novaSenha && (
-            <p className="mt-1 text-sm text-red-600">{errors.novaSenha.message}</p>
-          )}
-          <p className="mt-1 text-xs text-gray-500">
-            Mínimo 6 caracteres, com uma maiúscula, um número e um símbolo.
-          </p>
-        </div>
+        <Campo
+          id="novaSenha"
+          label="Nova senha"
+          type="password"
+          autoComplete="new-password"
+          erro={errors.novaSenha?.message}
+          ajuda="Mínimo 6 caracteres, com uma maiúscula, um número e um símbolo."
+          {...register("novaSenha")}
+        />
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700" htmlFor="confirmarSenha">
-            Confirmar nova senha
-          </label>
-          <input
-            id="confirmarSenha"
-            type="password"
-            autoComplete="new-password"
-            className="mt-1 w-full rounded-lg border border-borda px-3 py-2 focus:border-blue-500 focus:outline-none"
-            {...register("confirmarSenha")}
-          />
-          {errors.confirmarSenha && (
-            <p className="mt-1 text-sm text-red-600">{errors.confirmarSenha.message}</p>
-          )}
-        </div>
+        <Campo
+          id="confirmarSenha"
+          label="Confirmar nova senha"
+          type="password"
+          autoComplete="new-password"
+          erro={errors.confirmarSenha?.message}
+          {...register("confirmarSenha")}
+        />
 
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full rounded-full bg-blue-600 px-4 py-2 font-medium text-white transition hover:bg-blue-700 disabled:opacity-50"
-        >
+        <Botao type="submit" disabled={isSubmitting} className="w-full">
           {isSubmitting ? "Salvando..." : "Redefinir senha"}
-        </button>
+        </Botao>
       </form>
     </div>
   );

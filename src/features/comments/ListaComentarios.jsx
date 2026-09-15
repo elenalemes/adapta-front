@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Pencil, Trash2 } from "lucide-react";
 import { FormularioComentario } from "./FormularioComentario";
+import { BotaoIcone } from "../../shared/components/Botao";
 
 function formatarData(dataIso) {
   return new Date(dataIso).toLocaleDateString("pt-BR", {
@@ -16,7 +17,7 @@ export function ListaComentarios({ comentarios, usuarioId, isAdmin, onEditar, on
 
   if (comentarios.length === 0) {
     return (
-      <p className="text-sm text-gray-500">
+      <p className="text-body-lg text-gray-500">
         Nenhum comentário ainda. Seja a primeira pessoa a comentar!
       </p>
     );
@@ -66,7 +67,7 @@ export function ListaComentarios({ comentarios, usuarioId, isAdmin, onEditar, on
             <div className="flex-1">
               <div className="flex items-start justify-between gap-2">
                 <p
-                  className={`text-sm font-medium ${
+                  className={`text-title-sm ${
                     autorRemovido ? "italic text-texto-fraco" : "text-gray-900"
                   }`}
                 >
@@ -74,27 +75,27 @@ export function ListaComentarios({ comentarios, usuarioId, isAdmin, onEditar, on
                 </p>
 
                 {!editando && (podeEditar || podeExcluir) && (
-                  <div className="flex flex-shrink-0 gap-2">
+                  <div className="flex flex-shrink-0">
                     {podeEditar && (
-                      <button
+                      <BotaoIcone
                         type="button"
                         onClick={() => setEditandoId(comentario.id)}
-                        className="text-gray-500 hover:text-blue-600"
-                        aria-label="Editar comentário"
+                        className="text-gray-600 hover:text-blue-700"
+                        aria-label={`Editar comentário de ${comentario.username ?? "usuário excluído"}`}
                       >
-                        <Pencil className="h-3.5 w-3.5" />
-                      </button>
+                        <Pencil className="h-4 w-4" aria-hidden="true" />
+                      </BotaoIcone>
                     )}
                     {podeExcluir && (
-                      <button
+                      <BotaoIcone
                         type="button"
                         onClick={() => handleExcluir(comentario)}
                         disabled={excluindoId === comentario.id}
-                        className="text-gray-500 hover:text-red-600 disabled:opacity-50"
-                        aria-label="Excluir comentário"
+                        className="text-gray-600 hover:text-red-700"
+                        aria-label={`Excluir comentário de ${comentario.username ?? "usuário excluído"}`}
                       >
-                        <Trash2 className="h-3.5 w-3.5" />
-                      </button>
+                        <Trash2 className="h-4 w-4" aria-hidden="true" />
+                      </BotaoIcone>
                     )}
                   </div>
                 )}
@@ -113,11 +114,13 @@ export function ListaComentarios({ comentarios, usuarioId, isAdmin, onEditar, on
               ) : (
                 <>
                   <p
-                    className={`text-sm ${autorRemovido ? "italic text-texto-fraco" : "text-gray-700"}`}
+                    className={`text-body-lg ${autorRemovido ? "italic text-texto-fraco" : "text-gray-700"}`}
                   >
                     {comentario.conteudo}
                   </p>
-                  <p className="mt-1 text-xs text-texto-fraco">{formatarData(comentario.data)}</p>
+                  <p className="mt-1 text-body-md text-texto-fraco">
+                    {formatarData(comentario.data)}
+                  </p>
                 </>
               )}
             </div>

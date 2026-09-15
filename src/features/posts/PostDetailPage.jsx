@@ -5,6 +5,7 @@ import { Pencil, Trash2 } from "lucide-react";
 import { buscarPostagemPorId, excluirPostagem } from "./postagensApi";
 import { ComentariosSecao } from "../comments/ComentariosSecao";
 import { useAuth } from "../../shared/hooks/useAuth";
+import { BotaoIcone } from "../../shared/components/Botao";
 
 function formatarData(dataIso) {
   return new Date(dataIso).toLocaleDateString("pt-BR", {
@@ -31,12 +32,14 @@ export function PostDetailPage() {
   });
 
   if (isLoading) {
-    return <p className="px-4 py-24 text-center text-gray-500">Carregando postagem...</p>;
+    return (
+      <p className="px-4 py-24 text-center text-body-lg text-gray-500">Carregando postagem...</p>
+    );
   }
 
   if (isError || !postagem) {
     return (
-      <p className="px-4 py-24 text-center text-gray-500">
+      <p className="px-4 py-24 text-center text-body-lg text-gray-500">
         Não foi possível carregar esta postagem.
       </p>
     );
@@ -76,8 +79,8 @@ export function PostDetailPage() {
 
       <div className="mb-6 flex items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">{postagem.titulo}</h1>
-          <div className="mt-2 flex items-center gap-3 text-sm text-gray-500">
+          <h1 className="text-headline-sm font-bold text-gray-900">{postagem.titulo}</h1>
+          <div className="mt-2 flex items-center gap-3 text-body-md text-gray-600">
             <div className="h-6 w-6 flex-shrink-0 overflow-hidden rounded-full bg-gray-200">
               {postagem.imagemUsuario && (
                 <img
@@ -90,38 +93,38 @@ export function PostDetailPage() {
             <span className={autorRemovido ? "italic text-texto-fraco" : ""}>
               Por {postagem.username ?? "usuário excluído"}
             </span>
-            <span>·</span>
+            <span aria-hidden="true">·</span>
             <span>{formatarData(postagem.dataPublicacao)}</span>
           </div>
         </div>
 
         {(podeEditar || podeExcluir) && (
-          <div className="flex flex-shrink-0 gap-3">
+          <div className="flex flex-shrink-0">
             {podeEditar && (
               <Link
                 to={`/blog/${postagem.id}/editar`}
-                className="text-gray-500 hover:text-blue-600"
+                className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-gray-600 hover:text-blue-700"
                 aria-label="Editar postagem"
               >
-                <Pencil className="h-4 w-4" />
+                <Pencil className="h-4 w-4" aria-hidden="true" />
               </Link>
             )}
             {podeExcluir && (
-              <button
+              <BotaoIcone
                 type="button"
                 onClick={handleExcluir}
                 disabled={excluindo}
-                className="text-gray-500 hover:text-red-600 disabled:opacity-50"
+                className="text-gray-600 hover:text-red-700"
                 aria-label="Excluir postagem"
               >
-                <Trash2 className="h-4 w-4" />
-              </button>
+                <Trash2 className="h-4 w-4" aria-hidden="true" />
+              </BotaoIcone>
             )}
           </div>
         )}
       </div>
 
-      <p className="mb-10 whitespace-pre-wrap leading-relaxed text-gray-700">
+      <p className="mb-10 max-w-[65ch] whitespace-pre-wrap text-body-lg leading-relaxed text-gray-700">
         {postagem.conteudo}
       </p>
 

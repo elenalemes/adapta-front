@@ -16,14 +16,14 @@ export function RotaAdmin() {
   }
 
   if (carregandoUsuario) {
-    return <p className="px-4 py-24 text-center text-gray-500">Carregando...</p>;
+    return <p className="px-4 py-24 text-center text-body-lg text-gray-500">Carregando...</p>;
   }
 
   if (!isAdmin) {
     return (
       <div className="px-4 py-24 text-center">
-        <h1 className="text-xl font-bold text-gray-900">Acesso restrito</h1>
-        <p className="mt-2 text-gray-600">Essa área é só para administradores.</p>
+        <h1 className="text-headline-sm font-bold text-gray-900">Acesso restrito</h1>
+        <p className="mt-2 text-body-lg text-gray-600">Essa área é só para administradores.</p>
       </div>
     );
   }
@@ -37,10 +37,10 @@ export function RotaAdmin() {
               key={aba.to}
               to={aba.to}
               className={({ isActive }) =>
-                `border-b-2 px-1 py-3 text-sm font-medium ${
+                `inline-flex min-h-11 items-center border-b-2 px-1 text-label-lg ${
                   isActive
                     ? "border-blue-600 text-blue-700"
-                    : "border-transparent text-gray-600 hover:text-gray-900"
+                    : "border-transparent text-gray-700 hover:text-gray-900"
                 }`
               }
             >

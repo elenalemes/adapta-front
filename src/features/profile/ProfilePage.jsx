@@ -12,12 +12,14 @@ import { listarPostagensPorAutor } from "../posts/postagensApi";
 import { JogoCard } from "../games/JogoCard";
 import { PostCard } from "../posts/PostCard";
 import { aplicarErrosDeValidacao, mensagemDeErro } from "../../shared/utils/apiErrors";
+import { Campo } from "../../shared/components/Campo";
+import { Botao } from "../../shared/components/Botao";
 
 export function ProfilePage() {
   const { usuario, carregandoUsuario } = useAuth();
 
   if (carregandoUsuario || !usuario) {
-    return <p className="px-4 py-24 text-center text-gray-500">Carregando perfil...</p>;
+    return <p className="px-4 py-24 text-center text-body-lg text-gray-500">Carregando perfil...</p>;
   }
 
   return <PerfilConteudo key={usuario.id} usuario={usuario} />;
@@ -107,7 +109,7 @@ function PerfilConteudo({ usuario }) {
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
-      <h1 className="mb-8 text-2xl font-bold text-gray-900">Meu perfil</h1>
+      <h1 className="mb-8 text-headline-sm font-bold text-gray-900">Meu perfil</h1>
 
       <section className="mb-10 flex items-center gap-5">
         <div className="h-20 w-20 flex-shrink-0 overflow-hidden rounded-full bg-gray-100">
@@ -120,14 +122,14 @@ function PerfilConteudo({ usuario }) {
           )}
         </div>
         <div>
-          <button
+          <Botao
             type="button"
+            variante="secundario"
             onClick={() => inputFotoRef.current?.click()}
             disabled={enviandoFoto}
-            className="rounded-full border border-borda px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50 disabled:opacity-50"
           >
             {enviandoFoto ? "Enviando..." : "Trocar foto"}
-          </button>
+          </Botao>
           <input
             ref={inputFotoRef}
             type="file"
@@ -135,66 +137,55 @@ function PerfilConteudo({ usuario }) {
             onChange={handleTrocarFoto}
             className="hidden"
           />
-          {erroFoto && <p className="mt-1 text-sm text-red-600">{erroFoto}</p>}
+          {erroFoto && <p className="mt-1 text-body-md text-red-700">{erroFoto}</p>}
         </div>
       </section>
 
       <section className="mb-10">
-        <h2 className="mb-4 text-lg font-semibold text-gray-900">Dados da conta</h2>
+        <h2 className="mb-4 text-title-lg font-semibold text-gray-900">Dados da conta</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm space-y-4" noValidate>
           {erroApi && (
-            <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700" role="alert">
+            <p className="rounded-lg bg-red-50 px-3 py-2 text-body-md text-red-700" role="alert">
               {erroApi}
             </p>
           )}
           {sucesso && (
-            <p className="rounded-lg bg-green-50 px-3 py-2 text-sm text-green-700">
+            <p
+              className="rounded-lg bg-green-50 px-3 py-2 text-body-md text-green-800"
+              role="status"
+            >
               Dados atualizados.
             </p>
           )}
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700" htmlFor="username">
-              Nome de usuário
-            </label>
-            <input
-              id="username"
-              className="mt-1 w-full rounded-lg border border-borda px-3 py-2 focus:border-blue-500 focus:outline-none"
-              {...register("username")}
-            />
-            {errors.username && (
-              <p className="mt-1 text-sm text-red-600">{errors.username.message}</p>
-            )}
-          </div>
+          <Campo
+            id="username"
+            label="Nome de usuário"
+            autoComplete="username"
+            erro={errors.username?.message}
+            {...register("username")}
+          />
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700" htmlFor="email">
-              E-mail
-            </label>
-            <input
-              id="email"
-              type="email"
-              className="mt-1 w-full rounded-lg border border-borda px-3 py-2 focus:border-blue-500 focus:outline-none"
-              {...register("email")}
-            />
-            {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>}
-          </div>
+          <Campo
+            id="email"
+            label="E-mail"
+            type="email"
+            autoComplete="email"
+            erro={errors.email?.message}
+            {...register("email")}
+          />
 
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="rounded-full bg-blue-600 px-6 py-2 text-sm font-medium text-white transition hover:bg-blue-700 disabled:opacity-50"
-          >
+          <Botao type="submit" disabled={isSubmitting}>
             {isSubmitting ? "Salvando..." : "Salvar alterações"}
-          </button>
+          </Botao>
         </form>
       </section>
 
       <section className="mb-10">
-        <h2 className="mb-4 text-lg font-semibold text-gray-900">Meus favoritos</h2>
-        {carregandoFavoritos && <p className="text-gray-500">Carregando...</p>}
+        <h2 className="mb-4 text-title-lg font-semibold text-gray-900">Meus favoritos</h2>
+        {carregandoFavoritos && <p className="text-body-lg text-gray-500">Carregando...</p>}
         {!carregandoFavoritos && favoritos?.length === 0 && (
-          <p className="text-gray-500">Você ainda não favoritou nenhum jogo.</p>
+          <p className="text-body-lg text-gray-500">Você ainda não favoritou nenhum jogo.</p>
         )}
         {favoritos?.length > 0 && (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -206,10 +197,10 @@ function PerfilConteudo({ usuario }) {
       </section>
 
       <section className="mb-10">
-        <h2 className="mb-4 text-lg font-semibold text-gray-900">Minhas postagens</h2>
-        {carregandoPostagens && <p className="text-gray-500">Carregando...</p>}
+        <h2 className="mb-4 text-title-lg font-semibold text-gray-900">Minhas postagens</h2>
+        {carregandoPostagens && <p className="text-body-lg text-gray-500">Carregando...</p>}
         {!carregandoPostagens && minhasPostagens?.conteudo?.length === 0 && (
-          <p className="text-gray-500">Você ainda não publicou nada no blog.</p>
+          <p className="text-body-lg text-gray-500">Você ainda não publicou nada no blog.</p>
         )}
         {minhasPostagens?.conteudo?.length > 0 && (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -221,19 +212,19 @@ function PerfilConteudo({ usuario }) {
       </section>
 
       <section className="border-t border-gray-100 pt-6">
-        <h2 className="mb-2 text-lg font-semibold text-gray-900">Excluir conta</h2>
-        <p className="mb-4 text-sm text-gray-600">
+        <h2 className="mb-2 text-title-lg font-semibold text-gray-900">Excluir conta</h2>
+        <p className="mb-4 text-body-lg text-gray-600">
           Essa ação é permanente. Seus comentários e postagens continuam no ar, marcados
           como de uma conta removida.
         </p>
-        <button
+        <Botao
           type="button"
+          variante="perigo"
           onClick={handleExcluirConta}
           disabled={excluindo}
-          className="rounded-full border border-red-300 px-5 py-2 text-sm font-medium text-red-600 transition hover:bg-red-50 disabled:opacity-50"
         >
           {excluindo ? "Excluindo..." : "Excluir minha conta"}
-        </button>
+        </Botao>
       </section>
     </div>
   );

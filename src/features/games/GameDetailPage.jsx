@@ -35,12 +35,12 @@ export function GameDetailPage() {
   });
 
   if (isLoading) {
-    return <p className="px-4 py-24 text-center text-gray-500">Carregando jogo...</p>;
+    return <p className="px-4 py-24 text-center text-body-lg text-gray-500">Carregando jogo...</p>;
   }
 
   if (isError || !jogo) {
     return (
-      <p className="px-4 py-24 text-center text-gray-500">
+      <p className="px-4 py-24 text-center text-body-lg text-gray-500">
         Não foi possível carregar este jogo.
       </p>
     );
@@ -51,9 +51,9 @@ export function GameDetailPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-10">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">{jogo.titulo}</h1>
+        <h1 className="text-headline-sm font-bold text-gray-900">{jogo.titulo}</h1>
         {jogo.anoInicial && jogo.anoFinal && (
-          <span className="mt-2 inline-block rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700">
+          <span className="mt-2 inline-block rounded-full bg-gray-100 px-3 py-1 text-label-lg text-gray-700">
             Ano escolar: {jogo.anoInicial}º ao {jogo.anoFinal}º ano
           </span>
         )}
@@ -61,10 +61,10 @@ export function GameDetailPage() {
 
       {areasAgrupadas.length > 0 && (
         <div className="mb-6 rounded-2xl border border-blue-100 bg-blue-50/60 p-5">
-          <h2 className="text-sm font-semibold text-gray-900">
+          <h2 className="text-title-md text-gray-900">
             Este jogo está de acordo com o currículo da BNCC!
           </h2>
-          <p className="mt-1 text-xs text-gray-700">
+          <p className="mt-1 max-w-[65ch] text-body-md text-gray-700">
             A BNCC organiza o currículo de aprendizado infantil em áreas do conhecimento
             categorias e componentes curriculares. Este jogo trabalha com:
           </p>
@@ -72,16 +72,16 @@ export function GameDetailPage() {
           <div className="mt-4 space-y-4">
             {areasAgrupadas.map((area) => (
               <div key={area.id}>
-                <span className="inline-block rounded-full bg-blue-600 px-3 py-1 text-xs font-semibold text-white">
+                <span className="inline-block rounded-full bg-blue-600 px-3 py-1 text-label-lg text-white">
                   Categoria: {area.nome}
                 </span>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {area.componentes.map((componente) => (
                     <span
                       key={componente.id}
-                      className="max-w-xs rounded-lg border border-blue-200 bg-white px-3 py-2 text-xs"
+                      className="max-w-xs rounded-lg border border-blue-200 bg-white px-3 py-2 text-body-md"
                     >
-                      <span className="block font-medium text-blue-700">
+                      <span className="block text-title-sm text-blue-700">
                         Componente curricular: {componente.nome}
                       </span>
                       {componente.descricao && (
@@ -107,7 +107,9 @@ export function GameDetailPage() {
       </div>
 
       <h2 className="sr-only">Sobre o jogo</h2>
-      <p className="mb-10 leading-relaxed text-gray-700">{jogo.descricao}</p>
+      <p className="mb-10 max-w-[65ch] text-body-lg leading-relaxed text-gray-700">
+        {jogo.descricao}
+      </p>
 
       <div className="mb-10 border-t border-gray-100 pt-6">
         <SeletorNota jogoId={jogo.id} minhaNotaInicial={jogo.minhaNota} />

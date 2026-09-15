@@ -11,6 +11,7 @@ import {
 } from "../../shared/services/jogosApi";
 import { FiltroBNCC } from "./FiltroBNCC";
 import { JogoCard } from "./JogoCard";
+import { Botao } from "../../shared/components/Botao";
 
 const TAMANHO_PAGINA = 12;
 
@@ -69,33 +70,34 @@ export function JogosCatalogPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
-      <h1 className="mb-8 text-2xl font-bold text-gray-900">Catálogo de jogos</h1>
+      <h1 className="mb-8 text-headline-sm font-bold text-gray-900">Catálogo de jogos</h1>
 
       <div className="mb-10 grid grid-cols-1 gap-8 md:grid-cols-2">
         <div>
-          <h2 className="mb-4 text-left text-base font-semibold text-gray-700">
+          <h2 className="mb-4 text-left text-title-lg font-semibold text-gray-700">
             Encontre seu jogo favorito!
           </h2>
           <form onSubmit={handleSubmitBusca} className="flex max-w-md gap-2">
+            <label className="sr-only" htmlFor="busca-jogo">
+              Buscar jogo por título
+            </label>
             <input
+              id="busca-jogo"
               type="search"
               value={textoBusca}
               onChange={(evento) => setTextoBusca(evento.target.value)}
               placeholder="Buscar jogo por título..."
-              className="w-full rounded-full border border-borda px-4 py-2 text-sm focus:border-blue-500 focus:outline-none"
+              className="min-h-11 w-full rounded-full border border-borda px-4 text-body-lg text-gray-900"
             />
-            <button
-              type="submit"
-              className="flex items-center gap-2 rounded-full bg-blue-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-blue-700"
-            >
+            <Botao type="submit" className="flex-shrink-0 px-4">
               <Search className="h-4 w-4" aria-hidden="true" />
               Buscar
-            </button>
+            </Botao>
           </form>
         </div>
 
         <div>
-          <h2 className="mb-4 text-left text-base font-semibold text-gray-700">
+          <h2 className="mb-4 text-left text-title-lg font-semibold text-gray-700">
             Ou selecione uma categoria BNCC
           </h2>
           <FiltroBNCC
@@ -111,10 +113,10 @@ export function JogosCatalogPage() {
 
       <h2 className="sr-only">Jogos encontrados</h2>
 
-      {isLoading && <p className="text-gray-500">Carregando...</p>}
+      {isLoading && <p className="text-body-lg text-gray-500">Carregando...</p>}
 
       {!isLoading && jogos.length === 0 && (
-        <p className="text-gray-500">
+        <p className="text-body-lg text-gray-500" role="status">
           {temFiltroAtivo
             ? "Nenhum jogo encontrado para esse filtro."
             : "Nenhum jogo cadastrado ainda."}
@@ -135,18 +137,18 @@ export function JogosCatalogPage() {
             type="button"
             onClick={() => irParaPagina(Math.max(0, pagina - 1))}
             disabled={data.primeira}
-            className="text-sm font-medium text-blue-600 hover:underline disabled:text-gray-300 disabled:no-underline"
+            className="inline-flex min-h-11 items-center px-2 text-label-lg text-blue-700 hover:underline disabled:text-gray-400 disabled:no-underline"
           >
             Anterior
           </button>
-          <span className="text-sm text-gray-500">
+          <span className="text-body-md text-gray-600" role="status">
             Página {data.pagina + 1} de {data.totalPaginas}
           </span>
           <button
             type="button"
             onClick={() => irParaPagina(pagina + 1)}
             disabled={data.ultima}
-            className="text-sm font-medium text-blue-600 hover:underline disabled:text-gray-300 disabled:no-underline"
+            className="inline-flex min-h-11 items-center px-2 text-label-lg text-blue-700 hover:underline disabled:text-gray-400 disabled:no-underline"
           >
             Próxima
           </button>

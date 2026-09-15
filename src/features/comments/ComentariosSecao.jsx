@@ -53,15 +53,15 @@ export function ComentariosSecao({ tipo, alvoId, comentariosIniciais, totalInici
 
   return (
     <section className="space-y-4">
-      <h2 className="text-lg font-semibold text-gray-900">
+      <h2 className="text-title-lg font-semibold text-gray-900">
         Comentários {total > 0 && `(${total})`}
       </h2>
 
       {estaLogado ? (
         <FormularioComentario onEnviar={handleNovoComentario} />
       ) : (
-        <p className="text-sm text-gray-600">
-          <Link to="/entrar" className="text-blue-600 hover:underline">
+        <p className="text-body-lg text-gray-600">
+          <Link to="/entrar" className="text-blue-700 hover:underline">
             Entre
           </Link>{" "}
           pra deixar um comentário.
@@ -81,7 +81,7 @@ export function ComentariosSecao({ tipo, alvoId, comentariosIniciais, totalInici
           type="button"
           onClick={carregarTodos}
           disabled={carregandoMais}
-          className="text-sm font-medium text-blue-600 hover:underline disabled:opacity-50"
+          className="inline-flex min-h-11 items-center text-label-lg text-blue-700 hover:underline disabled:opacity-50"
         >
           {carregandoMais ? "Carregando..." : `Ver todos os ${total} comentários`}
         </button>

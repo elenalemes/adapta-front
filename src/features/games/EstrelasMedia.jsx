@@ -5,7 +5,7 @@ export function EstrelasMedia({ media, total }) {
   const cheias = Math.round(media);
 
   return (
-    <div className="flex items-center gap-2 text-sm text-gray-600">
+    <div className="flex items-center gap-2 text-body-lg text-gray-700">
       <div className="flex" aria-hidden="true">
         {[1, 2, 3, 4, 5].map((n) => (
           <Star

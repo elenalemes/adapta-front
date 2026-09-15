@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { mensagemDeErro } from "../../shared/utils/apiErrors";
+import { Botao } from "../../shared/components/Botao";
 
 export function FormularioComentario({
   onEnviar,
@@ -21,7 +22,7 @@ export function FormularioComentario({
     setEnviando(true);
     try {
       await onEnviar(texto.trim());
-      if (!onCancelar) setTexto(""); 
+      if (!onCancelar) setTexto("");
     } catch (error) {
       setErro(mensagemDeErro(error, "Não foi possível publicar o comentário."));
     } finally {
@@ -32,7 +33,7 @@ export function FormularioComentario({
   return (
     <form onSubmit={handleSubmit} className="space-y-2">
       {erro && (
-        <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700" role="alert">
+        <p className="rounded-lg bg-red-50 px-3 py-2 text-body-md text-red-700" role="alert">
           {erro}
         </p>
       )}
@@ -40,26 +41,19 @@ export function FormularioComentario({
         value={texto}
         onChange={(evento) => setTexto(evento.target.value)}
         placeholder={placeholder}
+        aria-label={placeholder}
         rows={3}
         maxLength={1000}
-        className="w-full rounded-xl border border-borda p-3 text-sm focus:border-blue-500 focus:outline-none"
+        className="w-full rounded-xl border border-borda p-3 text-body-lg text-gray-900"
       />
       <div className="flex gap-3">
-        <button
-          type="submit"
-          disabled={enviando || !texto.trim()}
-          className="rounded-full bg-blue-600 px-5 py-2 text-sm font-medium text-white transition hover:bg-blue-700 disabled:opacity-50"
-        >
+        <Botao type="submit" disabled={enviando || !texto.trim()}>
           {enviando ? textoBotaoEnviando : textoBotao}
-        </button>
+        </Botao>
         {onCancelar && (
-          <button
-            type="button"
-            onClick={onCancelar}
-            className="rounded-full border border-borda px-5 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-          >
+          <Botao type="button" variante="secundario" onClick={onCancelar}>
             Cancelar
-          </button>
+          </Botao>
         )}
       </div>
     </form>
