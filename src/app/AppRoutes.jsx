@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { Layout } from "../shared/components/Layout";
 import { RotaAdmin } from "../shared/components/RotaAdmin";
 import { RotaProtegida } from "../shared/components/RotaProtegida";
-import { EmConstrucao } from "../shared/components/EmConstrucao";
+import { SobreNosPage } from "../features/institutional/SobreNosPage";
 import { HomePage } from "../features/games/HomePage";
 import { GameDetailPage } from "../features/games/GameDetailPage";
 import { JogosCatalogPage } from "../features/games/JogosCatalogPage";
@@ -33,8 +33,7 @@ export function AppRoutes() {
         <Route path="/jogos/:id" element={<GameDetailPage />} />
         <Route path="/blog" element={<BlogListPage />} />
         <Route path="/blog/:id" element={<PostDetailPage />} />
-        <Route path="/sobre-nos" element={<EmConstrucao titulo="Sobre nós" />} />
-        <Route path="/ajuda" element={<EmConstrucao titulo="Ajuda" />} />
+        <Route path="/sobre-nos" element={<SobreNosPage />} />
 
         <Route element={<RotaProtegida />}>
           <Route path="/perfil" element={<ProfilePage />} />

@@ -6,7 +6,6 @@ const LINKS = [
   { to: "/jogos", label: "Jogos" },
   { to: "/blog", label: "Blog" },
   { to: "/sobre-nos", label: "Sobre nós" },
-  { to: "/ajuda", label: "Ajuda" },
 ];
 
 export function Footer() {
