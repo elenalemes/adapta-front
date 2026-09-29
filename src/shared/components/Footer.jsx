@@ -15,7 +15,9 @@ export function Footer() {
     <footer className="bg-blue-900 text-blue-50">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:flex-row sm:items-start sm:justify-between">
         <div className="text-left">
-          <h2 className="text-title-lg font-semibold text-white">Conheça o Adapta</h2>
+          <h2 className="text-title-lg font-semibold text-white">
+            Conheça o Adapta
+          </h2>
           <ul className="mt-2">
             {LINKS.map((link) => (
               <li key={link.to}>
@@ -30,7 +32,11 @@ export function Footer() {
           </ul>
         </div>
 
-        <img src={logoBranco} alt="Adapta" className="h-12 w-auto" />
+        <img
+          src={logoBranco}
+          alt="Adapta"
+          className="h-10 w-auto max-w-full shrink-0 self-start object-contain sm:h-12"
+        />
       </div>
 
       <div className="border-t border-blue-800">
