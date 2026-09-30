@@ -142,13 +142,13 @@ export function HomePage() {
           educação mais acessível por meio de tecnologia para todas as crianças,
           especialmente aquelas com dificuldades para aprender da maneira
           regular em sala de aula. Sabemos que cada indivíduo é especial e
-          acreditamos que a tecnologia pode ser uma aliada poderosa na educaçã e
-          por isso desenvolvemos jogos educacionais adaptados, que respeitam o
+          acreditamos que a tecnologia pode ser uma aliada poderosa na educação
+          e por isso desenvolvemos jogos educacionais adaptados, que respeitam o
           jeito de aprender de cada criança.
         </p>
 
         <p className="mt-4 max-w-3xl text-body-lg text-texto-fraco">
-          Aqui, reunimos jogos educacionais livres e gratuítos, desenvolvidos
+          Aqui, reunimos jogos educacionais livres e gratuitos, desenvolvidos
           com atenção às diretrizes de acessibilidade, para que professores,
           terapeutas e famílias encontrem, em um só lugar, atividades pensadas
           de verdade para o jeito de aprender de cada criança.
@@ -195,7 +195,7 @@ export function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-16">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <h2 className="text-headline-sm font-bold text-gray-900">
-            Sessão Blog
+            Seção Blog
           </h2>
           <Link
             to="/blog"
