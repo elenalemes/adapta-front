@@ -13,7 +13,7 @@ import { FiltroBNCC } from "./FiltroBNCC";
 import { JogoCard } from "./JogoCard";
 import { Botao } from "../../shared/components/Botao";
 
-const TAMANHO_PAGINA = 12;
+const TAMANHO_PAGINA = 6;
 
 export function JogosCatalogPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -24,14 +24,18 @@ export function JogosCatalogPage() {
 
   const [textoBusca, setTextoBusca] = useState(busca);
 
-  const { data: areas } = useQuery({ queryKey: ["areas"], queryFn: listarAreas });
+  const { data: areas } = useQuery({
+    queryKey: ["areas"],
+    queryFn: listarAreas,
+  });
 
   const { data, isLoading } = useQuery({
     queryKey: ["jogos", "catalogo", { areaId, componenteId, busca, pagina }],
     queryFn: () => {
       const paginacao = { page: pagina, size: TAMANHO_PAGINA };
       if (busca) return buscarJogosPorTitulo(busca, paginacao);
-      if (componenteId) return listarJogosPorComponente(componenteId, paginacao);
+      if (componenteId)
+        return listarJogosPorComponente(componenteId, paginacao);
       if (areaId) return listarJogosPorArea(areaId, paginacao);
       return listarJogos(paginacao);
     },
@@ -70,7 +74,9 @@ export function JogosCatalogPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
-      <h1 className="mb-8 text-headline-sm font-bold text-gray-900">Catálogo de jogos</h1>
+      <h1 className="mb-8 text-headline-sm font-bold text-gray-900">
+        Catálogo de jogos
+      </h1>
 
       <div className="mb-10 grid grid-cols-1 gap-8 md:grid-cols-2">
         <div>
