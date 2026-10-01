@@ -35,7 +35,11 @@ export function GameDetailPage() {
   });
 
   if (isLoading) {
-    return <p className="px-4 py-24 text-center text-body-lg text-gray-500">Carregando jogo...</p>;
+    return (
+      <p className="px-4 py-24 text-center text-body-lg text-gray-500">
+        Carregando jogo...
+      </p>
+    );
   }
 
   if (isError || !jogo) {
@@ -51,7 +55,9 @@ export function GameDetailPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-10">
       <div className="mb-6">
-        <h1 className="text-headline-sm font-bold text-gray-900">{jogo.titulo}</h1>
+        <h1 className="text-headline-sm font-bold text-gray-900">
+          {jogo.titulo}
+        </h1>
         {jogo.anoInicial && jogo.anoFinal && (
           <span className="mt-2 inline-block rounded-full bg-gray-100 px-3 py-1 text-label-lg text-gray-700">
             Ano escolar: {jogo.anoInicial}º ao {jogo.anoFinal}º ano
@@ -65,8 +71,8 @@ export function GameDetailPage() {
             Este jogo está de acordo com o currículo da BNCC!
           </h2>
           <p className="mt-1 max-w-[65ch] text-body-md text-gray-700">
-            A BNCC organiza o currículo de aprendizado infantil em áreas do conhecimento
-            categorias e componentes curriculares. Este jogo trabalha com:
+            A BNCC organiza o currículo de aprendizado infantil em categorias e
+            componentes curriculares. Este jogo trabalha com:
           </p>
 
           <div className="mt-4 space-y-4">
@@ -85,7 +91,9 @@ export function GameDetailPage() {
                         Componente curricular: {componente.nome}
                       </span>
                       {componente.descricao && (
-                        <span className="mt-0.5 block text-gray-700">{componente.descricao}</span>
+                        <span className="mt-0.5 block text-gray-700">
+                          {componente.descricao}
+                        </span>
                       )}
                     </span>
                   ))}
@@ -98,11 +106,18 @@ export function GameDetailPage() {
 
       <div className="mb-6">
         <h2 className="sr-only">Jogar</h2>
-        <VisualizadorJogo key={jogo.id} urlJogo={jogo.urlJogo} titulo={jogo.titulo} />
+        <VisualizadorJogo
+          key={jogo.id}
+          urlJogo={jogo.urlJogo}
+          titulo={jogo.titulo}
+        />
       </div>
 
       <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
-        <EstrelasMedia media={jogo.mediaAvaliacao} total={jogo.totalAvaliacoes} />
+        <EstrelasMedia
+          media={jogo.mediaAvaliacao}
+          total={jogo.totalAvaliacoes}
+        />
         <BotaoFavoritar jogoId={jogo.id} favoritadoInicial={jogo.favoritado} />
       </div>
 
