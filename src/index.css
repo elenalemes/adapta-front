@@ -71,9 +71,13 @@ body {
 
 
 :focus-visible {
-  outline: 3px solid var(--color-foco) !important;
+  outline: 3px solid var(--foco-atual, var(--color-foco)) !important;
   outline-offset: 2px;
   border-radius: 2px;
+}
+
+footer {
+  --foco-atual: #FFFFFF;
 }
 
 @media (prefers-reduced-motion: reduce) {

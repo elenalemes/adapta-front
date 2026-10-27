@@ -11,7 +11,7 @@ export function FiltroBNCC({
 
   return (
     <div
-      className={`flex flex-col gap-4 sm:flex-row ${
+      className={`flex flex-col flex-wrap gap-4 sm:flex-row ${
         centralizado ? "items-center sm:justify-center" : "items-stretch sm:justify-start"
       }`}
     >
@@ -19,7 +19,7 @@ export function FiltroBNCC({
         aria-label="Selecione a categoria"
         value={areaId ?? ""}
         onChange={(evento) => onAreaChange(evento.target.value || null)}
-        className="min-h-11 w-full rounded-full border border-borda px-5 text-body-lg text-gray-700 sm:w-auto"
+        className="min-h-11 w-full rounded-full border border-borda px-5 text-body-lg text-gray-700 sm:w-auto sm:min-w-0 sm:max-w-full"
       >
         <option value="">Selecione a categoria</option>
         {areas?.map((area) => (
@@ -34,7 +34,7 @@ export function FiltroBNCC({
         value={componenteId ?? ""}
         onChange={(evento) => onComponenteChange(evento.target.value || null)}
         disabled={!areaId}
-        className="min-h-11 w-full rounded-full border border-borda px-5 text-body-lg text-gray-700 disabled:bg-gray-50 disabled:text-gray-400 sm:w-auto"
+        className="min-h-11 w-full rounded-full border border-borda px-5 text-body-lg text-gray-700 disabled:bg-gray-50 disabled:text-gray-400 sm:w-auto sm:min-w-0 sm:max-w-full"
       >
         <option value="">Selecione o componente curricular</option>
         {componentesDisponiveis.map((componente) => (
