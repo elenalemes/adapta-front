@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Pencil, Trash2, Plus } from "lucide-react";
 import { listarJogos, excluirJogo } from "../../shared/services/jogosApi";
-import { BotaoIcone, LinkIcone } from "../../shared/components/Botao";
+import { BotaoIcone } from "../../shared/components/Botao";
 
 const TAMANHO_PAGINA = 10;
 
@@ -87,18 +87,16 @@ export function AdminJogosPage() {
                     )}
                   </td>
                   <td className="px-4 py-3">
-                    <div className="flex items-center justify-end gap-2">
-                      <LinkIcone
+                    <div className="flex items-center justify-end">
+                      <Link
                         to={`/admin/jogos/${jogo.id}/editar`}
-                        rotulo="Editar"
-                        className="text-gray-600 hover:text-blue-700"
+                        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-gray-600 hover:text-blue-700"
                         aria-label={`Editar ${jogo.titulo}`}
                       >
                         <Pencil className="h-4 w-4" aria-hidden="true" />
-                      </LinkIcone>
+                      </Link>
                       <BotaoIcone
                         type="button"
-                        rotulo="Excluir"
                         onClick={() => handleExcluir(jogo)}
                         disabled={excluindoId === jogo.id}
                         className="text-gray-600 hover:text-red-700"
