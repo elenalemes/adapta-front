@@ -4,7 +4,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Pencil, Trash2, Plus } from "lucide-react";
 import { listarComponentes, excluirComponente } from "../../shared/services/componentesApi";
 import { mensagemDeErro } from "../../shared/utils/apiErrors";
-import { BotaoIcone } from "../../shared/components/Botao";
+import { BotaoIcone, LinkIcone } from "../../shared/components/Botao";
 
 function agruparPorArea(componentes) {
   const areas = new Map();
@@ -98,16 +98,18 @@ export function AdminComponentesPage() {
                     <td className="px-4 py-3 text-gray-700">{componente.codigo}</td>
                     <td className="px-4 py-3 text-gray-700">{componente.descricao || "—"}</td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center justify-end">
-                        <Link
+                      <div className="flex items-center justify-end gap-2">
+                        <LinkIcone
                           to={`/admin/componentes/${componente.id}/editar`}
-                          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-gray-600 hover:text-blue-700"
+                          rotulo="Editar"
+                          className="text-gray-600 hover:text-blue-700"
                           aria-label={`Editar ${componente.nome}`}
                         >
                           <Pencil className="h-4 w-4" aria-hidden="true" />
-                        </Link>
+                        </LinkIcone>
                         <BotaoIcone
                           type="button"
+                          rotulo="Excluir"
                           onClick={() => handleExcluir(componente)}
                           disabled={excluindoId === componente.id}
                           className="text-gray-600 hover:text-red-700"

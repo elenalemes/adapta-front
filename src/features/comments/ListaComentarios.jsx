@@ -75,10 +75,11 @@ export function ListaComentarios({ comentarios, usuarioId, isAdmin, onEditar, on
                 </p>
 
                 {!editando && (podeEditar || podeExcluir) && (
-                  <div className="flex flex-shrink-0">
+                  <div className="flex flex-shrink-0 gap-2">
                     {podeEditar && (
                       <BotaoIcone
                         type="button"
+                        rotulo="Editar comentário"
                         onClick={() => setEditandoId(comentario.id)}
                         className="text-gray-600 hover:text-blue-700"
                         aria-label={`Editar comentário de ${comentario.username ?? "usuário excluído"}`}
@@ -89,6 +90,7 @@ export function ListaComentarios({ comentarios, usuarioId, isAdmin, onEditar, on
                     {podeExcluir && (
                       <BotaoIcone
                         type="button"
+                        rotulo="Excluir comentário"
                         onClick={() => handleExcluir(comentario)}
                         disabled={excluindoId === comentario.id}
                         className="text-gray-600 hover:text-red-700"

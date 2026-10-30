@@ -131,10 +131,11 @@ export function AdminUsuariosPage() {
                       )}
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center justify-end">
+                      <div className="flex items-center justify-end gap-2">
                         {admin ? (
                           <BotaoIcone
                             type="button"
+                            rotulo="Remover admin"
                             onClick={() => handleRemoverAdmin(usuario)}
                             disabled={ehVoceMesma || emAcao}
                             title={
@@ -150,6 +151,7 @@ export function AdminUsuariosPage() {
                         ) : (
                           <BotaoIcone
                             type="button"
+                            rotulo="Promover a admin"
                             onClick={() => handlePromover(usuario)}
                             disabled={emAcao}
                             title="Promover a administrador"
@@ -161,6 +163,7 @@ export function AdminUsuariosPage() {
                         )}
                         <BotaoIcone
                           type="button"
+                          rotulo="Excluir conta"
                           onClick={() => handleExcluir(usuario)}
                           disabled={emAcao}
                           title="Excluir conta"

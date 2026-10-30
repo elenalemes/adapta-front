@@ -45,17 +45,17 @@ export function Footer() {
           <div className="flex gap-3">
             <a
               href="#"
-              aria-label="WhatsApp"
-              className="inline-flex min-h-11 min-w-11 items-center justify-center transition hover:text-white"
+              className="inline-flex min-h-11 min-w-11 flex-col items-center justify-center gap-0.5 px-2 text-label-sm leading-tight transition hover:text-white"
             >
               <MessageCircle size={18} aria-hidden="true" />
+              WhatsApp
             </a>
             <a
               href="#"
-              aria-label="E-mail"
-              className="inline-flex min-h-11 min-w-11 items-center justify-center transition hover:text-white"
+              className="inline-flex min-h-11 min-w-11 flex-col items-center justify-center gap-0.5 px-2 text-label-sm leading-tight transition hover:text-white"
             >
               <Mail size={18} aria-hidden="true" />
+              E-mail
             </a>
           </div>
         </div>

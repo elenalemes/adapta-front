@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Pencil, Trash2 } from "lucide-react";
 import { buscarPostagemPorId, excluirPostagem } from "./postagensApi";
 import { ComentariosSecao } from "../comments/ComentariosSecao";
 import { useAuth } from "../../shared/hooks/useAuth";
-import { BotaoIcone } from "../../shared/components/Botao";
+import { BotaoIcone, LinkIcone } from "../../shared/components/Botao";
 
 function formatarData(dataIso) {
   return new Date(dataIso).toLocaleDateString("pt-BR", {
@@ -99,23 +99,23 @@ export function PostDetailPage() {
         </div>
 
         {(podeEditar || podeExcluir) && (
-          <div className="flex flex-shrink-0">
+          <div className="flex flex-shrink-0 gap-2">
             {podeEditar && (
-              <Link
+              <LinkIcone
                 to={`/blog/${postagem.id}/editar`}
-                className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-gray-600 hover:text-blue-700"
-                aria-label="Editar postagem"
+                rotulo="Editar postagem"
+                className="text-gray-600 hover:text-blue-700"
               >
                 <Pencil className="h-4 w-4" aria-hidden="true" />
-              </Link>
+              </LinkIcone>
             )}
             {podeExcluir && (
               <BotaoIcone
                 type="button"
+                rotulo="Excluir postagem"
                 onClick={handleExcluir}
                 disabled={excluindo}
                 className="text-gray-600 hover:text-red-700"
-                aria-label="Excluir postagem"
               >
                 <Trash2 className="h-4 w-4" aria-hidden="true" />
               </BotaoIcone>
